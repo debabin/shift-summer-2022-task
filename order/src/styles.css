@@ -165,10 +165,21 @@ hr {
 
 /* Form
 ––––––––––––––––––––––––––––––––– */
-label {
-  font-weight: bolder;
+.form-block-label {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   font-size: 18px;
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
+    'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
+    sans-serif;
+}
+
+label {
   display: flex;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  font-size: 16px;
   font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
     'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
     sans-serif;
@@ -615,7 +626,8 @@ abbr {
 }
 
 .form-control {
-  margin-top: 1rem;
+  display: block;
+
 }
 
 .valid input[type='email'],
@@ -701,6 +713,7 @@ button[type='reset'] {
 }
 
 .app {
+  display: block;
   margin: 0 auto;
   max-width: 600px;
   padding: 1rem;
@@ -717,6 +730,7 @@ button[type='reset'] {
   background: linear-gradient(to right,
       #4299e1,
       #f56565);
+  background-clip: border-box;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
@@ -732,6 +746,7 @@ button[type='reset'] {
 }
 
 .delivery-order-form {
+  display: block;
   padding: 1rem;
   border: 1px solid var(--gray-200);
   border-radius: var(--border-radius);

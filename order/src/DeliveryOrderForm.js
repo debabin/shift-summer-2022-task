@@ -1,9 +1,12 @@
 import { FormikProvider, Form, useFormik } from 'formik';
 import * as Yup from 'yup';
-import FormBlock from './FormBlock';
+import { PersonalInfoBlock } from './PersonalInfoBlock';
+import { limits } from "./constants/constants";
 
 const initialValues = {
-  username: '',
+  firstName: '',
+  middleName: '',
+  lastName: '',
 }
 
 const onSubmit = (values) => {
@@ -11,13 +14,13 @@ const onSubmit = (values) => {
 }
 
 const Schema = Yup.object().shape({
-  username: Yup.string()
-    .min(8, 'Must be at least 8 characters')
-    .max(20, 'Must be less than 20 characters')
-    .required('Username is required')
+  firstName: Yup.string()
+    .min(limits.min.Name, 'Must be at least 2 characters')
+    .max(limits.max.Name, 'Must be less than 30 characters')
+    .required('First name is required')
     .matches(
-      /^[a-zA-Z0-9]+$/,
-      'Cannot contain special characters or spaces'
+      /^[a-zA-Z]+$/,
+      'Cannot contain numbers, special characters or spaces'
     ),
 });
 
@@ -31,7 +34,7 @@ export const DeliveryOrderForm = () => {
   return (
     <FormikProvider value={formik}>
       <Form>
-        <FormBlock label="" />
+        <PersonalInfoBlock />
         <div>
           <button type="submit">Submit</button>
           <button type="reset">Reset</button>
