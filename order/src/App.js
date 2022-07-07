@@ -2,7 +2,7 @@ import './styles.css';
 import { DeliveryOrderForm } from './DeliveryOrderForm';
 import AppHeader from './AppHeader';
 
-function App() {
+export const App = () => {
   return (
     <div className="app">
       <header className="app-header">
@@ -14,5 +14,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
