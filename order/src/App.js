@@ -1,6 +1,6 @@
 import './styles.css';
 import { DeliveryOrderForm } from './DeliveryOrderForm';
-import AppHeader from './AppHeader';
+import { AppHeader } from './AppHeader';
 
 export const App = () => {
   return (

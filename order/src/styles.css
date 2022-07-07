@@ -702,8 +702,33 @@ button[type='reset'] {
 
 .app {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 600px;
   padding: 1rem;
+}
+
+.app-header {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.header-label {
+  background: linear-gradient(to right,
+      #4299e1,
+      #f56565);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, 'avenir next', avenir,
+    'helvetica neue', helvetica, ubuntu, roboto, noto, 'segoe ui', arial,
+    sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.header-icon {
+  max-width: 48px;
+  margin-right: 10px;
 }
 
 .delivery-order-form {
