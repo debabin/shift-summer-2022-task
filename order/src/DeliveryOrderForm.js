@@ -1,40 +1,19 @@
-import { FormikProvider, Form, useFormik } from 'formik';
 import * as Yup from 'yup';
-import { PersonalInfoBlock } from './PersonalInfoBlock';
+import { FormikProvider, Form, useFormik } from 'formik';
+import { RecieverPersonalInfoBlock } from './RecieverPersonalInfoBlock';
 import { limits } from "./constants/constants";
-
-const initialValues = {
-  firstName: '',
-  middleName: '',
-  lastName: '',
-}
-
-const onSubmit = (values) => {
-  alert(JSON.stringify(values));
-}
-
-const Schema = Yup.object().shape({
-  firstName: Yup.string()
-    .min(limits.min.Name, 'Must be at least 2 characters')
-    .max(limits.max.Name, 'Must be less than 30 characters')
-    .required('First name is required')
-    .matches(
-      /^[a-zA-Z]+$/,
-      'Cannot contain numbers, special characters or spaces'
-    ),
-});
 
 export const DeliveryOrderForm = () => {
   const formik = useFormik({
     initialValues: initialValues,
     onSubmit: onSubmit,
-    validationSchema: Schema,
+    validationSchema: ValidationSchema,
   });
 
   return (
     <FormikProvider value={formik}>
       <Form>
-        <PersonalInfoBlock />
+        <RecieverPersonalInfoBlock />
         <div>
           <button type="submit">Submit</button>
           <button type="reset">Reset</button>
@@ -43,3 +22,47 @@ export const DeliveryOrderForm = () => {
     </FormikProvider>
   );
 }
+
+const onSubmit = (values) => {
+  alert(JSON.stringify(values, null, 2));
+}
+
+const initialValues = {
+  receiverFirstName: '',
+  receiverLastName: '',
+  receiverMiddleName: '',
+  receiverBirthDate: '',
+  receiverRegistrationAddress: '',
+  senderFirstName: '',
+  senderLastName: '',
+  senderMiddleName: '',
+  senderBirthDate: '',
+  senderRegistrationAddress: '',
+}
+
+const ValidationSchema = Yup.object().shape({
+  receiverFirstName: Yup.string()
+    .min(limits.min.Name, 'Must be at least ' + limits.min.Name + ' characters')
+    .max(limits.max.Name, 'Must be less than ' + limits.max.Name + ' characters')
+    .required('First name is required')
+    .matches(
+      /^[a-zA-Zа-яА-Я]+$/,
+      'Cannot contain numbers, special characters or spaces'
+    ),
+  receiverLastName: Yup.string()
+    .min(limits.min.Name, 'Must be at least ' + limits.min.Name + ' characters')
+    .max(limits.max.Name, 'Must be less than ' + limits.max.Name + ' characters')
+    .required('Last name is required')
+    .matches(
+      /^[a-zA-Zа-яА-Я]+$/,
+      'Cannot contain numbers, special characters or spaces'
+    ),
+  receiverMiddleName: Yup.string()
+    .min(limits.min.Name, 'Must be at least ' + limits.min.Name + ' characters')
+    .max(limits.max.Name, 'Must be less than ' + limits.max.Name + ' characters')
+    .matches(
+      /^[a-zA-Zа-яА-Я]+$/,
+      'Cannot contain numbers, special characters or spaces'
+    ),
+});
+
