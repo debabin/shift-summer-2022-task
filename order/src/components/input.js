@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Input = ({ label, name, type, min, max, onChange, value, col, row, props }) => {
+export const Input = ({ label, name, type, min, max, onChange, value, col, row, isRequired, props }) => {
     var colStart = col;
     var colEnd = col;
     if (Array.isArray(col)) {
@@ -18,7 +18,7 @@ export const Input = ({ label, name, type, min, max, onChange, value, col, row, 
                         value={value}
                         name={name}
                         onChange={onChange}
-                        className="required"
+                        required={isRequired}
                         {...props}
                     />
                 )
@@ -29,7 +29,7 @@ export const Input = ({ label, name, type, min, max, onChange, value, col, row, 
                         value={value}
                         name={name}
                         onChange={onChange}
-                        className="required"
+                        required={isRequired}
                         {...props}
                     />
                 )

@@ -85,21 +85,23 @@ export const Form = () => {
         //const reqres = "https://reqres.in/";
         const apiLink = "api/create/order";
         const apiUrl = heroku + apiLink;
-        const data = formState;
+        const data = JSON.stringify({ order:formState });
         console.log(typeof data);
         sendRequest(data, apiUrl);
     }
 
-    // отправка запроса на сервер. не работает :(
+// отправка запроса на сервер
     const sendRequest = (data, apiUrl) => {
+        const successMessage = " Спасибо! Ваш заказ принят.";
+        const errorMessage = "Упс! Кажется, что-то пошло не так. Приносим свои извинения.";
         axios.post(apiUrl, data, {
             headers: {
                 "Content-Type": "application/json",
                 "Accept": "application/json"
             }
         })
-        .then(response => { console.log(response) })
-        .catch(function (error) { console.log(error) })
+        .then(response => { console.log(response); alert(successMessage) })
+        .catch(function (error) { console.log(error); alert(errorMessage) })
     };
 
     return (
@@ -107,34 +109,34 @@ export const Form = () => {
             <h2 id="page-title">Заявка на доставку</h2>
             <p className="form-unit-title">Персональные данные отправителя </p><hr />
             <div className="form-elements" id="sender">
-                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.firstname} name="firstname" />
-                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.lastname} name="lastname" />
-                <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.middlename} name="middlename" />
-                <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.sender.noMiddlename} name="noMiddlename" />
-                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.sender.birthDate} name="birthDate" />
-                <Input col={[2, 5]} row={2} label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.sender.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} />
+                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.firstname} name="firstname" isRequired={true}/>
+                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.lastname} name="lastname" isRequired={true}/>
+                <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.middlename} name="middlename" isRequired={false} />
+                <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.sender.noMiddlename} name="noMiddlename" isRequired={false}/>
+                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.sender.birthDate} name="birthDate" isRequired={true}/>
+                <Input col={[2, 5]} row={2} label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.sender.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} isRequired={false}/>
             </div>
 
             <p className="form-unit-title">Персональные данные получателя</p><hr />
             <div className="form-elements" id="receiver">
-                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.firstname} name="firstname" />
-                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.lastname} name="lastname" />
-                <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.middlename} name="middlename" />
-                <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.receiver.noMiddlename} name="noMiddlename" />
-                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.receiver.birthDate} name="birthDate" />
-                <Input col={[2, 5]} row="2" label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.receiver.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} />
+                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.firstname} name="firstname" isRequired={true}/>
+                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.lastname} name="lastname" isRequired={true}/>
+                <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.middlename} name="middlename" isRequired={false}/>
+                <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.receiver.noMiddlename} name="noMiddlename" isRequired={false}/>
+                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.receiver.birthDate} name="birthDate" isRequired={true}/>
+                <Input col={[2, 5]} row="2" label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.receiver.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} isRequired={false}/>
             </div>
             <p className="form-unit-title">Адрес доставки </p><hr />
             <div className="form-elements" id="address">
-                <Input col={1} row={1} label="Город*" type="text" min={2} max={50} onChange={handleChange} value={formState.address.city} name="city" />
-                <Input col={2} row={1} label="Улица*" type="text" min={2} max={60} onChange={handleChange} value={formState.address.street} name="street" />
-                <Input col={3} row={1} label="Дом*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.house} name="house" />
-                <Input col={4} row={1} label="Квартира*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.apartment} name="apartment" />
-                <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.address.comment} name="comment" />
+                <Input col={1} row={1} label="Город*" type="text" min={2} max={50} onChange={handleChange} value={formState.address.city} name="city" isRequired={true}/>
+                <Input col={2} row={1} label="Улица*" type="text" min={2} max={60} onChange={handleChange} value={formState.address.street} name="street" isRequired={true}/>
+                <Input col={3} row={1} label="Дом*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.house} name="house" isRequired={true}/>
+                <Input col={4} row={1} label="Квартира*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.apartment} name="apartment" isRequired={true}/>
+                <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.address.comment} name="comment" isRequired={false}/>
             </div>
             <p className="form-unit-title">Данные о посылке </p><hr />
             <div className="form-elements" id="package">
-                <Select col={1} row={1} label="Тип посылки*" onChange={handleChange} value={formState.package.type} name="type">
+                <Select col={1} row={1} label="Тип посылки*" onChange={handleChange} value={formState.package.type} name="type" isRequired={true}>
                     <option>письмо</option>
                     <option>ценное письмо</option>
                     <option>бандероль</option>
@@ -142,8 +144,8 @@ export const Form = () => {
                     <option>посылка</option>
                     <option>ценная посылка</option>
                 </Select>
-                <Input col={2} row={1} label="Примерный вес посылки*" type="number" min={0.1} max={20} onChange={handleChange} value={formState.package.weight} name="weight" props={{ step: "any" }} />
-                <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.package.comment} name="comment" />
+                <Input col={2} row={1} label="Примерный вес посылки*" type="number" min={0.1} max={20} onChange={handleChange} value={formState.package.weight} name="weight" props={{ step: "any" }} isRequired={true}/>
+                <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.package.comment} name="comment" isRequired={false}/>
             </div>
             <Button>Заказать доставку</Button>
         </form>
