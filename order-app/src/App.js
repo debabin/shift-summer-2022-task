@@ -1,18 +1,19 @@
-import logo from './logo.svg';
+import pic from './findName.png';
 import './App.css';
 
 function App() {
+  document.body.style.backgroundColor = "black";
   const onSubmit = (d) => {
     alert(JSON.stringify())
   }
   return (
     <div>
-      <div>
-        <h1>
+      <div className="title">
+        <h2>
           Заявка на доставку
-        </h1>
+        </h2>
       </div>
-      <form onSubmit={onSubmit}>
+      <form className="form-box" style={{backgroundColor: '#cecece'}} onSubmit={onSubmit}>
 
         <h2>Персональные данные получателя</h2>
         <label>Имя</label>
@@ -20,9 +21,8 @@ function App() {
         <label>Фамилия</label>
         <input name="secondName" />
         <label>Отчество</label>
+        <input type="checkbox" name="checkPatronymic" />        
         <input name="patronymic" />
-        <label>Есть отчество</label>
-        <input type="checkbox" name="checkPatronymic" />
         <label>Дата рождения</label>
         <input type="date" name="dateOfBirth" />
         <label>Адрес доставки</label>
@@ -34,9 +34,8 @@ function App() {
         <label>Фамилия</label>
         <input name="secondName" />
         <label>Отчество</label>
+        <input type="checkbox" name="checkPatronymic" />        
         <input name="patronymic" />
-        <label>Есть отчество</label>
-        <input type="checkbox" name="checkPatronymic" />
         <label>Дата рождения</label>
         <input type="date" name="dateOfBirth" />
         <label>Адрес доставки</label>
