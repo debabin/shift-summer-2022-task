@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title>Оформление</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="top">
+            <div class="top__rectangle">
+                <object class="top__logo" type="image/svg+xml" data="./images/logo.svg" id="svg"></object>
+                <p class="top__title">Заявка на доставку</p>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="info-block">
+            <p class="info-block__title"><span class="green">Шаг 2 из 3:</span> заполнение данных</p>
+        <div class="info-block__recipient">
+            <p>Получатель</p>
+            <form name="test" method="post" action="#">
+                <input class="info-block__input" type="text" name="last_name" minlength="2" maxlength="30" placeholder="Фамилия *" required>
+                <input class="info-block__input" type="text" name="first_name" minlength="2" maxlength="30" placeholder="Имя *" required>
+                <input class="info-block__input" type="text" name="middle_name" minlength="2" maxlength="30" placeholder="Отчество">
+<!--                <input class="info-block__input" type="checkbox" id="no_middle_name" name="no_middle_name" value="no">-->
+<!--                <label for="no_middle_name">Нет отчества</label>-->
+                <input class="info-block__input" type="date" name="date_of_birth" placeholder="День рождения *" required>
+                <input class="info-block__input" type="text" name="live_place" minlength="10" maxlength="50" placeholder="Адрес">
+            </form>
+        </div>
+        <div class="info-block__sender">
+            <p>Отправитель</p>
+            <form name="test" method="post" action="#">
+                <input class="info-block__input" type="text" name="last_name" minlength="2" maxlength="30" placeholder="Фамилия *" required>
+                <input class="info-block__input" type="text" name="first_name" minlength="2" maxlength="30" placeholder="Имя *" required>
+                <input class="info-block__input" type="text" name="middle_name" minlength="2" maxlength="30" placeholder="Отчество">
+                <input class="info-block__input" type="date" name="date_of_birth" placeholder="День рождения *" required>
+                <input class="info-block__input" type="text" name="live_place" minlength="10" maxlength="50" placeholder="Адрес">
+            </form>
+        </div>
+        <div class="info-block__address">
+            <p>Адрес доставки</p>
+            <form name="test" method="post" action="#">
+                <input class="info-block__input" type="text" name="city" minlength="2" maxlength="50" placeholder="Город *" required>
+                <input class="info-block__input" type="text" name="street" minlength="2" maxlength="60" placeholder="Улица *" required>
+                <input class="info-block__input" type="text" name="house" minlength="1" maxlength="10" placeholder="Дом *" required>
+                <input class="info-block__input" type="text" name="room" minlength="1" maxlength="10" placeholder="Квартира *" required><br>
+                <textarea class="info-block__textarea" name="comment" placeholder="Комментарий курьеру"></textarea>
+            </form>
+        </div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+</body>
