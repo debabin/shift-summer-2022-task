@@ -1,3 +1,4 @@
+
 .form-elements {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -5,7 +6,7 @@
 }
 
 #content {
-  padding-left: 15px;
+  padding-left: 25px;
 }
 
 hr {
@@ -14,14 +15,15 @@ hr {
   width: 30%;
   display: block;
   border: none;
-  border-top: solid #888 0.1px;
+  border-top: solid #356FFF 0.1px;
 }
 
 .form-unit-title {
-  color: #B5B5B5;
+  color: #356FFF;
   margin-bottom: 0;
   margin-top: 10px;
   font-weight: 500;
+
 }
 
 label {
@@ -53,32 +55,39 @@ input[type="date"] {
 button[type="submit"] {
   width: 20%;
   height: 30px;
-  font-family: Roboto;
   color: #fff;
   background-color: lightskyblue;
+  background-color: #0093E9;
   border: none;
   margin-top: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 500;
+  background-color: #356FFF;
+  
 }
 
 #side-div {
   top: 0px;
   right: 0px;
-  background-color: lightskyblue;
   position: fixed;
   width: 30%;
   height: 100%;
+  background-color: #D7E9FF;
+
 }
 
 h2 {
   font-size: 30px;
   margin-bottom: 0;
   margin-top: 5px;
+  font-family: Montserrat;
 }
 
 h3 {
   font-size: 18px;
   margin-top: 0;
-  color: #B5B5B5;
 }
 
 #side-logo {
@@ -97,15 +106,29 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  color: #fff;
+  color: #356FFF;
   text-align: center;
-  font-family: Caveat;
+  font-family: Montserrat;
+  font-weight: 500;
   font-size: 50px;
+
 }
 
 select:focus,
 textarea:focus,
 input:focus {
-  outline-color: lightskyblue;
+  outline-color: #92CEFF;
   border-radius: 2px;
+
 }
+
+select,
+textarea,
+input {
+  font-family: Roboto;
+  font-weight: 400;
+  border-radius: 2px;
+  border: 1px solid #858585;
+}
+
+

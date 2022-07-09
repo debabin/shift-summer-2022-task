@@ -57,11 +57,14 @@ export const Form = () => {
     // если выбран чекбокс, предыдущий инпут (для ввода отчества) становится неактивным
     const disablePrev = (element) => {
         var input = element.parentNode.previousElementSibling.children[1];
+        var label = element.parentNode.previousElementSibling.children[0];
         if (element.checked) {
             input.disabled = true;
+            label.className = "disabled-label";
         }
         else {
             input.disabled = false;
+            label.className = "";
         }
     };
 
@@ -80,11 +83,11 @@ export const Form = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        //const localhost = "http://localhost:3000/";
-        const heroku = "https://shift-summer-2022-backend.herokuapp.com/";
+        const localhost = "http://localhost:3000/";
+        //const heroku = "https://shift-summer-2022-backend.herokuapp.com/";
         //const reqres = "https://reqres.in/";
         const apiLink = "api/create/order";
-        const apiUrl = heroku + apiLink;
+        const apiUrl = localhost + apiLink;
         const data = JSON.stringify({ order:formState });
         console.log(typeof data);
         sendRequest(data, apiUrl);
@@ -101,7 +104,10 @@ export const Form = () => {
             }
         })
         .then(response => { console.log(response); alert(successMessage) })
-        .catch(function (error) { console.log(error); alert(errorMessage) })
+        .catch(function (error) { 
+            try { alert(error.response.data.data.sender.firstname)}
+            catch {
+             alert(errorMessage) }})
     };
 
     return (
@@ -109,34 +115,34 @@ export const Form = () => {
             <h2 id="page-title">Заявка на доставку</h2>
             <p className="form-unit-title">Персональные данные отправителя </p><hr />
             <div className="form-elements" id="sender">
-                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.firstname} name="firstname" isRequired={true}/>
-                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.lastname} name="lastname" isRequired={true}/>
+                <Input col={1} row={1} label="Имя" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.firstname} name="firstname" isRequired={true}/>
+                <Input col={2} row={1} label="Фамилия" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.lastname} name="lastname" isRequired={true}/>
                 <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.sender.middlename} name="middlename" isRequired={false} />
                 <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.sender.noMiddlename} name="noMiddlename" isRequired={false}/>
-                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.sender.birthDate} name="birthDate" isRequired={true}/>
+                <Input col={1} row={2} label="Дата рождения" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.sender.birthDate} name="birthDate" isRequired={true}/>
                 <Input col={[2, 5]} row={2} label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.sender.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} isRequired={false}/>
             </div>
 
             <p className="form-unit-title">Персональные данные получателя</p><hr />
             <div className="form-elements" id="receiver">
-                <Input col={1} row={1} label="Имя*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.firstname} name="firstname" isRequired={true}/>
-                <Input col={2} row={1} label="Фамилия*" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.lastname} name="lastname" isRequired={true}/>
+                <Input col={1} row={1} label="Имя" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.firstname} name="firstname" isRequired={true}/>
+                <Input col={2} row={1} label="Фамилия" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.lastname} name="lastname" isRequired={true}/>
                 <Input col={3} row={1} label="Отчество" type="text" min={2} max={30} onChange={handleChange} value={formState.receiver.middlename} name="middlename" isRequired={false}/>
                 <Input col={4} row={1} label="Нет отчества" type="checkbox" onChange={handleChange} value={formState.receiver.noMiddlename} name="noMiddlename" isRequired={false}/>
-                <Input col={1} row={2} label="Дата рождения*" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.receiver.birthDate} name="birthDate" isRequired={true}/>
+                <Input col={1} row={2} label="Дата рождения" type="date" min={minDate} max={maxDate} onChange={handleChange} value={formState.receiver.birthDate} name="birthDate" isRequired={true}/>
                 <Input col={[2, 5]} row="2" label="Адрес проживания" type="text" min={10} max={50} onChange={handleChange} value={formState.receiver.registrationAdress} name="registrationAdress" props={{ style: { width: 100 + '%' } }} isRequired={false}/>
             </div>
             <p className="form-unit-title">Адрес доставки </p><hr />
             <div className="form-elements" id="address">
-                <Input col={1} row={1} label="Город*" type="text" min={2} max={50} onChange={handleChange} value={formState.address.city} name="city" isRequired={true}/>
-                <Input col={2} row={1} label="Улица*" type="text" min={2} max={60} onChange={handleChange} value={formState.address.street} name="street" isRequired={true}/>
-                <Input col={3} row={1} label="Дом*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.house} name="house" isRequired={true}/>
-                <Input col={4} row={1} label="Квартира*" type="text" min={1} max={10} onChange={handleChange} value={formState.address.apartment} name="apartment" isRequired={true}/>
+                <Input col={1} row={1} label="Город" type="text" min={2} max={50} onChange={handleChange} value={formState.address.city} name="city" isRequired={true}/>
+                <Input col={2} row={1} label="Улица" type="text" min={2} max={60} onChange={handleChange} value={formState.address.street} name="street" isRequired={true}/>
+                <Input col={3} row={1} label="Дом" type="text" min={1} max={10} onChange={handleChange} value={formState.address.house} name="house" isRequired={true}/>
+                <Input col={4} row={1} label="Квартира" type="text" min={1} max={10} onChange={handleChange} value={formState.address.apartment} name="apartment" isRequired={true}/>
                 <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.address.comment} name="comment" isRequired={false}/>
             </div>
             <p className="form-unit-title">Данные о посылке </p><hr />
             <div className="form-elements" id="package">
-                <Select col={1} row={1} label="Тип посылки*" onChange={handleChange} value={formState.package.type} name="type" isRequired={true}>
+                <Select col={1} row={1} label="Тип посылки" onChange={handleChange} value={formState.package.type} name="type" isRequired={true}>
                     <option>письмо</option>
                     <option>ценное письмо</option>
                     <option>бандероль</option>
@@ -144,7 +150,7 @@ export const Form = () => {
                     <option>посылка</option>
                     <option>ценная посылка</option>
                 </Select>
-                <Input col={2} row={1} label="Примерный вес посылки*" type="number" min={0.1} max={20} onChange={handleChange} value={formState.package.weight} name="weight" props={{ step: "any" }} isRequired={true}/>
+                <Input col={2} row={1} label="Примерный вес посылки" type="number" min={0.1} max={20} onChange={handleChange} value={formState.package.weight} name="weight" props={{ step: "any" }} isRequired={true}/>
                 <Textarea col={[1, 5]} row={2} onChange={handleChange} value={formState.package.comment} name="comment" isRequired={false}/>
             </div>
             <Button>Заказать доставку</Button>
