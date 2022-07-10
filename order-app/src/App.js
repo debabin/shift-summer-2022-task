@@ -5,6 +5,12 @@ import { useForm } from 'react-hook-form'
 function App() {
   document.body.style.backgroundColor = "black";
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const validateDate = (value) => {
+    const selected = new Date(value).getFullYear();
+    const now = new Date().getFullYear();
+    console.log( now - selected >= 18)
+    return now - selected >= 18;
+  };
   const onSubmit = (d) => {
     console.log(d)
   }
@@ -40,7 +46,13 @@ function App() {
         <p>{errors.patronymic1?.message}</p>
 
         <label>Дата рождения</label>
-        <input type="date" name="dateOfBirth1" />
+        <input {...register("dateOfBirth1", {
+          required: true,
+          validate: validateDate})}
+          type="date"
+          min="1900-01-01"
+        />
+        <p>{errors.dateOfBirth1?.message}</p>
 
         <label>Адрес проживания</label>
         <input {...register("adress1", { required: true, 
@@ -71,7 +83,7 @@ function App() {
         <p>{errors.patronymic2?.message}</p>
 
         <label>Дата рождения</label>
-        <input type="date" name="dateOfBirth2" />
+        <input type="date" name="dateOfBirth2"  />
 
         <label>Адрес проживания</label>
         <input {...register("adress2", { required: true, 
@@ -113,7 +125,14 @@ function App() {
         <h2>Данные о посылке</h2>
 
         <label>Тип посылки</label>
-        <input type="select" {...register("type")} />
+        <select {...register("type", { required: true })}>
+          <option value="letter">Письмо</option>
+          <option value="valuableLetter">Ценное письмо</option>
+          <option value="package1">Бандероль</option>
+          <option value="package2">Мелкий пакет</option>
+          <option value="package3">Посылка</option>
+          <option value="valuablePackage">Ценная посылка</option>
+        </select>
 
         <label>Примерный вес посылки</label>
         <input {...register("weight")} />

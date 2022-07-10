@@ -23,7 +23,7 @@
   border: #454545 3px solid;
 }
 
-.form-box input {
+.form-box input, select {
   display: block;
   text-align: left;
   font-size: 20px;
