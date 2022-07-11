@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <style>
+      body{
+        color: #1faee9;
+        text-shadow: grey 0 0 2px;
+      }
+      div { 
+        margin: auto;
+        width: 364px;  
+        background: #b0e0e6;  
+        outline: 2px solid #b0e0e6; 
+        border: 3px solid #b0e0e6;
+        border-radius: 10px; 
+        box-shadow: 0 0 10px #000;
+      }
+      .checkbox{
+        position: relative;
+        }
+      .one{
+        position: absolute;
+        left: -999px;
+      }
+      input[name="Отчество"]:checked ~ span.one {
+        left:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div align="center"> 
+        <strong>Получатель</strong>
+        <p><input type="text" placeholder="Имя" minlength="2" maxlength="30"></p>
+        <p><input type="text" placeholder="Фамилия" minlength="2" maxlength="30"></p>
+        <p align="left">
+          <strong><label for="Отчество" >Отчество</label></strong>
+          <input type="checkbox" name="Отчество" checked>
+          <span class="one">
+            <input type="text" name="one" placeholder="Отчество" minlength="2" maxlength="30">
+          </span>
+        </p>
+        <strong>Дата рождения</strong>
+        <p><input type="date" min="1900-01-01" max="2004-07-07"></p>
+        <strong>Адрес проживания</strong>
+        <p><input type="text" placeholder="Адрес" minlength="10" maxlength="50"></p>
+      </div>
+      <br>
+      <div align="center">
+        <strong>Отправитель</strong>
+        <p><input type="text" placeholder="Имя" minlength="2" maxlength="30"></p>
+        <p><input type="text" placeholder="Фамилия" minlength="2" maxlength="30"></p>
+        <p align="left">
+          <strong align="left"><label for="Отчество">Отчество</label></strong>
+          <input type="checkbox" name="Отчество" checked>
+          <span class="one">
+            <input type="text" name="one" placeholder="Отчество" minlength="2" maxlength="30">
+          </span>
+        </p>
+        <strong>Дата рождения</strong>
+        <p><input type="date"min="1900-01-01" ></p>
+        <strong>Адрес проживания</strong>
+        <p><input type="text" placeholder="Адрес" minlength="10" maxlength="50"></p>
+      </div>
+      <br>
+      <div align="center">
+        <strong>Адрес доставки</strong>
+        <p><input type="text" placeholder="Город"></p>
+        <p><input type="text" placeholder="Улица"></p>
+        <p><input type="text" placeholder="Дом"></p>
+        <p><input type="text" placeholder="Квартира"></p>
+        <p><textarea cols="40" placeholder="Информация для доставщика"></textarea></p>
+      </div >
+      <br>
+      <div align="center">
+        <strong>Информация о посылке</strong>
+        <select>
+          <option>письмо</option>
+          <option>ценное письмо</option>
+          <option>бандероль</option>
+          <option>мелкий пакет</option>
+          <option>посылка</option>
+          <option>ценная посылка</option>
+        </select>
+      </div >  
+      <br>
+      <div align="center">
+        <input type="submit" value="Отправить">
+        <input type="reset" value="Очистить">
+      </div>
+    </form>
+  </body>
+</html>
