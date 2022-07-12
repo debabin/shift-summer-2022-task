@@ -56,10 +56,10 @@ function App() {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-xl m-auto py-5 mt-10 px-8 border"
+        className="max-w-7xl m-auto py-5 mt-10 px-8 border grid grid-cols-2 gap-12"
       >
         <PersonInfo register={register} errors={errors} actor="recipient" />
-        {/* <PersonInfo register={register} errors={errors} actor="sender" /> */}
+        <PersonInfo register={register} errors={errors} actor="sender" />
 
         <Controller
           control={control}
