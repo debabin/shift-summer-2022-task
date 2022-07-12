@@ -1,7 +1,7 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { Pages } from './components/pages';
+import { Pages } from './components/Pages';
 import { CharacterList } from './components/CharacterList';
 import { CharacterListByQuery } from './components/CharacterListByQuery';
 

@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-import { CharcterCard } from './characterCard';
-import { Loading } from './loading';
-import { Error } from './error';
-import { NoMatches } from './noMatches';
+import { CharcterCard } from './CharacterCard';
+import { Loading } from './Loading';
+import { Error } from './Error';
+import { NoMatches } from './NoMatches';
 
 export const CharacterListByQuery = ({ query }) => {
   const allPages = Array.from(Array(827).keys()).join();

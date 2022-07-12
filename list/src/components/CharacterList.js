@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useQuery } from 'react-query';
 
-import { CharcterCard } from './characterCard';
-import { Loading } from './loading';
-import { Error } from './error';
+import { CharcterCard } from './CharacterCard';
+import { Loading } from './Loading';
+import { Error } from './Error';
 
 export const CharacterList = ({ page }) => {
   const { isLoading, error, data } = useQuery('repoData', () =>
