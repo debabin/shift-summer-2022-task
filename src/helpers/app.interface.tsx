@@ -1,31 +1,31 @@
 export interface IPersonInfo {
-  name: string;
-  surname: string;
-  patronymic?: string;
+  firstname: string;
+  lastname: string;
+  middlename?: string;
   hasNoPatronymic: boolean;
-  dateOfBirth: Date;
-  address?: string;
+  birthDate: Date;
+  registrationAdress?: string;
 }
 
 export interface IAddress {
   city: string;
   street: string;
-  houseNumber: number;
-  apartmentNumber: number;
-  note?: string;
+  house: number;
+  apartment: number;
+  comment?: string;
 }
 
 export interface IParcelInfo {
   type: string;  
-  approximateWeight: number;
-  note?: string;
+  weight: number;
+  comment?: string;
 }
 
 export interface IShippingFields {
   sender: IPersonInfo;
-  recipient: IPersonInfo;
+  receiver: IPersonInfo;
   address: IAddress;
-  parcel: IParcelInfo;
+  package: IParcelInfo;
 }
 
 export interface IOption {

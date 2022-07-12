@@ -6,7 +6,7 @@ import {
 } from "react-hook-form";
 
 
-type actorOption = "sender" | "recipient";
+type actorOption = "sender" | "receiver";
 
 export type PersonInfoProps<TFormValues> = {
   register: UseFormRegister<TFormValues>;

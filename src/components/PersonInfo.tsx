@@ -21,8 +21,8 @@ function PersonInfo({
     case "sender":
       errorObject = errors.sender;
       break;
-    case "recipient":
-      errorObject = errors.recipient;
+    case "receiver":
+      errorObject = errors.receiver;
       break;
   }
 
@@ -38,7 +38,7 @@ function PersonInfo({
             Name
           </label>
           <input
-            {...register(`${actor}.name`, {
+            {...register(`${actor}.firstname`, {
               required: "Name is require field!",
               minLength: getRuleMinLength(2),
               maxLength: getRuleMaxLength(30),
@@ -48,9 +48,9 @@ function PersonInfo({
             type="text"
             autoFocus
           />
-          {errorObject?.name && (
+          {errorObject?.firstname && (
             <p className="text-red-500 text-xs italic">
-              {errorObject.name.message}
+              {errorObject.firstname.message}
             </p>
           )}
         </div>
@@ -60,7 +60,7 @@ function PersonInfo({
             Surname
           </label>
           <input
-            {...register(`${actor}.surname`, {
+            {...register(`${actor}.lastname`, {
               required: "Surname is require field!",
               minLength: getRuleMinLength(2),
               maxLength: getRuleMaxLength(30),
@@ -70,9 +70,9 @@ function PersonInfo({
             type="text"
             autoFocus
           />
-          {errorObject?.surname && (
+          {errorObject?.lastname && (
             <p className="text-red-500 text-xs italic">
-              {errorObject.surname.message}
+              {errorObject.lastname.message}
             </p>
           )}
         </div>
@@ -83,7 +83,7 @@ function PersonInfo({
             Patronymic
             <div className=" flex items-center">
               <label
-                onClick={() => setIsChecked(!isChecked)}
+                onClick={() => { setIsChecked(!isChecked)}}
                 className={
                   isChecked
                     ? "form__checkbox form__checkbox--active"
@@ -110,7 +110,7 @@ function PersonInfo({
           </div>
 
           <input
-            {...register(`${actor}.patronymic`, {
+            {...register(`${actor}.middlename`, {
               minLength: getRuleMinLength(2),
               maxLength: getRuleMaxLength(30),
               pattern: getRulePatternLetters(),
@@ -120,9 +120,9 @@ function PersonInfo({
             type="text"
             autoFocus
           />
-          {errorObject?.patronymic && (
+          {errorObject?.middlename && (
             <p className="text-red-500 text-xs italic">
-              {errorObject.patronymic.message}
+              {errorObject.middlename.message}
             </p>
           )}
         </div>
@@ -132,7 +132,7 @@ function PersonInfo({
             Birthday date
           </label>
           <input
-            {...register(`${actor}.dateOfBirth`, {
+            {...register(`${actor}.birthDate`, {
               required: "Birthday date is require field!",
             })}
             className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
@@ -141,16 +141,18 @@ function PersonInfo({
             min={"1990-01-01"}
             autoFocus
           />
-          {errorObject?.dateOfBirth && (
+          {errorObject?.birthDate && (
             <p className="text-red-500 text-xs italic">
-              {errorObject.dateOfBirth.message}
+              {errorObject.birthDate.message}
             </p>
           )}
         </div>
       </div>
-      <label className="text-gray-600 font-normal mt-2 block">Residential address</label>
+      <label className="text-gray-600 font-normal mt-2 block">
+        Residential address
+      </label>
       <input
-        {...register(`${actor}.address`, {
+        {...register(`${actor}.registrationAdress`, {
           minLength: getRuleMinLength(10),
           maxLength: getRuleMaxLength(50),
         })}
@@ -158,6 +160,11 @@ function PersonInfo({
         type="text"
         autoFocus
       />
+      {errorObject?.registrationAdress && (
+        <p className="text-red-500 text-xs italic">
+          {errorObject.registrationAdress.message}
+        </p>
+      )}
     </div>
   );
 }

@@ -57,7 +57,7 @@ function AddressInfo({ register, errors }: AddressInfoProps<IShippingFields>) {
             House number
           </label>
           <input
-            {...register("address.houseNumber", {
+            {...register("address.house", {
               required: "House number is require field!",
               minLength: getRuleMinLength(1),
               maxLength: getRuleMaxLength(10),
@@ -66,9 +66,9 @@ function AddressInfo({ register, errors }: AddressInfoProps<IShippingFields>) {
             type="text"
             autoFocus
           />
-          {errors.address?.houseNumber && (
+          {errors.address?.house && (
             <p className="text-red-500 text-xs italic">
-              {errors.address.houseNumber.message}
+              {errors.address.house.message}
             </p>
           )}
         </div>
@@ -78,7 +78,7 @@ function AddressInfo({ register, errors }: AddressInfoProps<IShippingFields>) {
             Apartment number
           </label>
           <input
-            {...register("address.apartmentNumber", {
+            {...register("address.apartment", {
               required: "Apartment number is require field!",
               minLength: getRuleMinLength(1),
               maxLength: getRuleMaxLength(10),
@@ -87,19 +87,19 @@ function AddressInfo({ register, errors }: AddressInfoProps<IShippingFields>) {
             type="text"
             autoFocus
           />
-          {errors.address?.apartmentNumber && (
+          {errors.address?.apartment && (
             <p className="text-red-500 text-xs italic">
-              {errors.address.apartmentNumber.message}
+              {errors.address.apartment.message}
             </p>
           )}
         </div>
       </div>
       <div className="mb-2">
         <label className="text-gray-600 font-normal block">
-          Note for the courier
+          Comment for the courier
         </label>
         <textarea
-          {...register("address.note")}
+          {...register("address.comment")}
           className="form__input border-solid border-gray-300 border py-1 px-4 w-full rounded text-gray-700"
           autoFocus
         />

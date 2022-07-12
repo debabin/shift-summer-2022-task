@@ -43,7 +43,7 @@ function ParcelInfo({
     <div>
       <Controller
         control={control}
-        name="parcel.type"
+        name="package.type"
         rules={{
           required: "Parcel type is required field",
         }}
@@ -76,7 +76,7 @@ function ParcelInfo({
                 Approximate weight
               </label>
               <input
-                {...register("parcel.approximateWeight", {
+                {...register("package.weight", {
                   required: "Parcel weight is require field!",
                   min: { value: 0.1, message: "Minimum weight is 0.1" },
                   max: { value: 20, message: "Maximum weight is 20" },
@@ -87,18 +87,18 @@ function ParcelInfo({
                 min={0}
                 autoFocus
               />
-              {errors.parcel?.approximateWeight && (
+              {errors.package?.weight && (
                 <p className="text-red-500 text-xs italic">
-                  {errors.parcel.approximateWeight.message}
+                  {errors.package.weight.message}
                 </p>
               )}
             </div>
             <div className="mb-2">
               <label className="text-gray-600 font-normal block">
-                Note for the courier
+                Comment for the courier
               </label>
               <textarea
-                {...register("parcel.note")}
+                {...register("package.comment")}
                 className="form__input border-solid border-gray-300 border py-1 px-4 w-full rounded text-gray-700"
                 autoFocus
               />
