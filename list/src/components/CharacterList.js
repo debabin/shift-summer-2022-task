@@ -18,7 +18,7 @@ export const CharacterList = ({ page }) => {
       .then(response => response.data.data.results)
   )
   if (isLoading) {
-    return (<Loading></Loading>)
+    return (<Loading />)
   }
 
   if (error) {

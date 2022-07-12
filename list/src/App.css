@@ -1,13 +1,5 @@
 @import './fonts.css';
 
-.header-pic {
-  width: 200px;
-  z-index: -100;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 h1 {
   font-size: 50px;
   text-align: center;
@@ -16,19 +8,6 @@ h1 {
   text-shadow: -2px -2px 0 #C0D75B, 2px -2px 0 #C0D75B, -2px 2px 0 #C0D75B, 2px 2px 0 #C0D75B;
   margin-bottom: 15px;
   margin-top: 5px;
-}
-
-.loading h1 {
-  margin-top: 0px;
-}
-
-.loading img {
-  width: 400px;
-  height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -15px;
 }
 
 .character-list {
@@ -76,6 +55,19 @@ h1 {
 
 .feature {
   font-weight: 500
+}
+
+.loading h1 {
+  margin-top: 0px;
+}
+
+.loading img {
+  width: 400px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -15px;
 }
 
 .error img {

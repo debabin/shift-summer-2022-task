@@ -7,9 +7,6 @@ import { CharacterListByQuery } from './components/CharacterListByQuery';
 
 import './App.css';
 
-
-
-
 const queryClient = new QueryClient();
 
 export const App = ({ pageId }) => {
@@ -38,7 +35,6 @@ export const App = ({ pageId }) => {
           <CharacterList page={pageId} />
           :
           <CharacterListByQuery query={state.query} />}
-
       </QueryClientProvider>
     </div>
   );
