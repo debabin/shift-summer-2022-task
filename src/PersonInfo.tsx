@@ -1,16 +1,7 @@
 import { useState } from "react";
-import {
-  DeepRequired,
-  FieldErrorsImpl,
-  UseFormRegister,
-} from "react-hook-form";
 import { IShippingFields } from "./app.interface";
-
-export type FormInputProps<TFormValues> = {
-  register: UseFormRegister<TFormValues>;
-  errors: FieldErrorsImpl<DeepRequired<TFormValues>>;
-  actor: "sender" | "recipient";
-};
+import { PersonInfoProps } from "./app.type";
+import { FaCheck } from "react-icons/fa";
 
 function getDate18YrsAgo() {
   const date18YrsAgo = new Date();
@@ -22,8 +13,8 @@ function PersonInfo({
   register,
   errors,
   actor,
-}: FormInputProps<IShippingFields>): JSX.Element {
-  const [noPatronymicRec, setNoPatronymicRec] = useState(false);
+}: PersonInfoProps<IShippingFields>): JSX.Element {
+  const [isChecked, setIsChecked] = useState(false);
 
   let errorObject;
   switch (actor) {
@@ -37,12 +28,12 @@ function PersonInfo({
 
   return (
     <div>
-      <p className="text-gray-800 text-xl font-medium mb-3 capitalize">
+      <p className="text-gray-600 text-xl font-semibold mb-3 capitalize">
         {actor} information
       </p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-end">
         <div className="flex flex-col">
-          <label className="text-gray-600 font-medium">
+          <label className="text-gray-600 font-normal">
             <span className="text-red-500 text-lg italic mr-1">*</span>
             Name
           </label>
@@ -62,7 +53,7 @@ function PersonInfo({
                 message: "Please enter valid value",
               },
             })}
-            className="border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
+            className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="text"
             autoFocus
           />
@@ -73,7 +64,7 @@ function PersonInfo({
           )}
         </div>
         <div className="flex flex-col grow">
-          <label className="text-gray-600 font-medium block">
+          <label className="text-gray-600 font-normal block">
             <span className="text-red-500 text-lg italic mr-1">*</span>
             Surname
           </label>
@@ -93,7 +84,7 @@ function PersonInfo({
                 message: "Please enter valid value",
               },
             })}
-            className="border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
+            className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="text"
             autoFocus
           />
@@ -106,18 +97,36 @@ function PersonInfo({
       </div>
       <div className="grid  grid-cols-1 lg:grid-cols-2 gap-3 items-end mt-2 ">
         <div className="flex flex-col grow">
-          <label className="text-gray-600 font-medium flex justify-between flex-wrap items-center">
+          <div className="text-gray-600 font-normal flex justify-between flex-wrap items-center">
             Patronymic
-            <label className="text-gray-600 text-sm flex items-center">
+            <div className=" flex items-center">
+              <label
+                onClick={() => setIsChecked(!isChecked)}
+                className={
+                  isChecked
+                    ? "form__checkbox form__checkbox--active"
+                    : "form__checkbox"
+                }
+              >
+                <FaCheck
+                  className={
+                    isChecked
+                      ? "form__checkbox__icon form__checkbox__icon--active"
+                      : "form__checkbox__icon"
+                  }
+                />
+              </label>
               <input
                 {...register(`${actor}.hasNoPatronymic`)}
-                className="mt-1 mr-1"
                 type="checkbox"
-                onClick={() => setNoPatronymicRec(!noPatronymicRec)}
+                className="hidden"
+                checked={isChecked}
+                onClick={() => setIsChecked(!isChecked)}
               />
-              Has no patronymic
-            </label>
-          </label>
+              <span className="text-gray-600 text-sm ">Has no patronymic </span>
+            </div>
+          </div>
+
           <input
             {...register(`${actor}.patronymic`, {
               minLength: {
@@ -133,8 +142,8 @@ function PersonInfo({
                 message: "Please enter valid value",
               },
             })}
-            disabled={noPatronymicRec}
-            className="border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
+            disabled={isChecked}
+            className="form__input border-solid border-gray-300 border py-1 px-4 w-full rounded text-gray-700 disabled:bg-slate-300"
             type="text"
             autoFocus
           />
@@ -145,7 +154,7 @@ function PersonInfo({
           )}
         </div>
         <div className="flex flex-col">
-          <label className="text-gray-600 font-medium block">
+          <label className="text-gray-600 font-normal block">
             <span className="text-red-500 text-lg italic mr-1">*</span>
             Birthday date
           </label>
@@ -153,7 +162,7 @@ function PersonInfo({
             {...register(`${actor}.dateOfBirth`, {
               required: "Birthday date is require field!",
             })}
-            className="border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
+            className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="date"
             max={getDate18YrsAgo()}
             min={"1990-01-01"}
@@ -166,7 +175,7 @@ function PersonInfo({
           )}
         </div>
       </div>
-      <label className="text-gray-600 font-medium mt-2 block">Address</label>
+      <label className="text-gray-600 font-normal mt-2 block">Address</label>
       <input
         {...register(`${actor}.address`, {
           minLength: {
@@ -178,7 +187,7 @@ function PersonInfo({
             message: "Length must be less than 30 symbols",
           },
         })}
-        className="border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
+        className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
         type="text"
         autoFocus
       />

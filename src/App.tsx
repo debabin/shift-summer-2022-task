@@ -1,8 +1,8 @@
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { IOption, IShippingFields } from "./app.interface";
-import "./App.css";
 import ReactSelect, { PropsValue } from "react-select";
 import PersonInfo from "./PersonInfo";
+import deliveryIcon from "./assets/delivery.png";
 
 function App() {
   const {
@@ -49,14 +49,15 @@ function App() {
   ];
 
   return (
-    <div className="App">
-      <h1 className="text-center text-2xl text-orange-500 mt-10">
-        Заявка на доставку
+    <div className="App ">
+      <h1 className="text-center text-4xl text-gray-900 mt-10">
+      Delivery request
+        <img src={deliveryIcon} className="h-10 inline ml-3"/>
       </h1>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="max-w-7xl m-auto py-5 mt-10 px-8 border grid grid-cols-2 gap-12"
+        className="max-w-7xl m-auto py-5 mt-10 px-8 grid grid-cols-2 gap-12 form"
       >
         <PersonInfo register={register} errors={errors} actor="recipient" />
         <PersonInfo register={register} errors={errors} actor="sender" />

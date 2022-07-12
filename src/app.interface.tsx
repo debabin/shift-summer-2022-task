@@ -14,17 +14,9 @@ export interface IAddress {
   apartmentNumber: number;
   note?: string;
 }
-// enum parcelType{
-//     letter,
-//     valuableLetter,
-//     package,
-//     smallPackage,
-//     parcel,
-//     valuableParcel
-// }
 
 export interface IParcelInfo {
-  type: string;  // or type:parcelType,
+  type: string;  
   approximateWeight: number;
   note?: string;
 }

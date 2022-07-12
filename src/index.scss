@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-light: #8abdff;
+  --primary: #6d5dfc;
+  --primary-dark: #5b0eeb;
+  
+  --white: #FFFFFF;
+  --greyLight-1: #E4EBF5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+
+$shadow: .3rem .3rem .6rem var(--greyLight-2), 
+-.2rem -.2rem .5rem var(--white);
+$inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+inset -.2rem -.2rem .5rem var(--white);
+$checked-shadow: -2px -2px 3px #bebebe,
+2px 2px 3px #ffffff;;
+
+body {
+  background-color:var(--greyLight-1);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.form {
+  border-radius: 3rem;
+  box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
+            -.2rem -.2rem 1.8rem var(--white);
+
+  &__input {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: $inner-shadow;
+    background: none;
+    color: var(--greyDark);
+    &::placeholder { color: var(--greyLight-3); }
+    &:focus { outline: none; box-shadow: $shadow;}
+  }  
+
+  &__checkbox{
+    border-radius: 4px;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    background-color:var(--greyLight-1);
+    box-shadow: $shadow;
+    cursor: pointer;
+    margin-right: 3px;
+    
+    &--active {
+      box-shadow:$checked-shadow;
+    }
+    
+    &__icon{
+      height: 10px;
+      margin: auto;
+      color: transparent;
+      
+        &--active{
+          color: var(--primary-dark);
+        }
+      }
+  }
+}
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
