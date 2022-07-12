@@ -69,20 +69,24 @@ export const Form = () => {
     };
 
     const sendRequest = (data, url) => {
-        const messages = {success: " Спасибо! Ваш заказ принят.", 
-        error: "Упс! Кажется, что-то пошло не так. Приносим свои извинения."}
-        axios.post(url, data, {
+        const promise = axios.post(url, data, {
             headers: {
                 "Content-Type": "application/json",
             }
         })
-            .then(response => { toast.success(messages.success); getOrderDetails(response); })
-            .catch(function (error) {
-                try { toast.error(error.response.data.data.sender.firstname) }
-                catch {
-                    toast.error(messages.error)
-                }
-            })
+        toast.promise(promise, {
+            loading: 'loading',
+            success: " Спасибо! Ваш заказ принят.",
+            error: (err) => getErrorMessage(err)
+        });
+        promise.then(response => { getOrderDetails(response); })
+    };
+
+    const getErrorMessage = (err) => {
+        try { return err.response.data.data.sender.firstname }
+        catch {
+            return "Упс! Кажется, что-то пошло не так. Приносим свои извинения."
+        }
     };
 
     const getOrderDetails = (response) => {
