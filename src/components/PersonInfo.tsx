@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { IShippingFields } from "./app.interface";
-import { PersonInfoProps } from "./app.type";
 import { FaCheck } from "react-icons/fa";
-
-function getDate18YrsAgo() {
-  const date18YrsAgo = new Date();
-  date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18);
-  return date18YrsAgo.toISOString().slice(0, 10);
-}
+import { IShippingFields } from "../helpers/app.interface";
+import { PersonInfoProps } from "../helpers/app.type";
+import {
+  getRuleMinLength,
+  getDate18YrsAgo,
+  getRuleMaxLength,
+  getRulePatternLetters,
+} from "../helpers/app.functions";
 
 function PersonInfo({
   register,
@@ -31,7 +31,7 @@ function PersonInfo({
       <p className="text-gray-600 text-xl font-semibold mb-3 capitalize">
         {actor} information
       </p>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-end">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 items-start">
         <div className="flex flex-col">
           <label className="text-gray-600 font-normal">
             <span className="text-red-500 text-lg italic mr-1">*</span>
@@ -40,18 +40,9 @@ function PersonInfo({
           <input
             {...register(`${actor}.name`, {
               required: "Name is require field!",
-              minLength: {
-                value: 2,
-                message: "Length must be at least 2 symbols",
-              },
-              maxLength: {
-                value: 30,
-                message: "Length must be less than 30 symbols",
-              },
-              pattern: {
-                value: /^[a-zA-Zа-яА-ЯЁё\s-]+$/,
-                message: "Please enter valid value",
-              },
+              minLength: getRuleMinLength(2),
+              maxLength: getRuleMaxLength(30),
+              pattern: getRulePatternLetters(),
             })}
             className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="text"
@@ -71,18 +62,9 @@ function PersonInfo({
           <input
             {...register(`${actor}.surname`, {
               required: "Surname is require field!",
-              minLength: {
-                value: 2,
-                message: "Length must be at least 2 symbols",
-              },
-              maxLength: {
-                value: 30,
-                message: "Length must be less than 30 symbols",
-              },
-              pattern: {
-                value: /^[a-zA-Zа-яА-ЯЁё\s-]+$/,
-                message: "Please enter valid value",
-              },
+              minLength: getRuleMinLength(2),
+              maxLength: getRuleMaxLength(30),
+              pattern: getRulePatternLetters(),
             })}
             className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="text"
@@ -95,9 +77,9 @@ function PersonInfo({
           )}
         </div>
       </div>
-      <div className="grid  grid-cols-1 lg:grid-cols-2 gap-3 items-end mt-2 ">
+      <div className="grid  grid-cols-1 lg:grid-cols-2 gap-3 items-start mt-2 ">
         <div className="flex flex-col grow">
-          <div className="text-gray-600 font-normal flex justify-between flex-wrap items-center">
+          <div className="text-gray-600 font-normal flex justify-between flex-wrap items-center mb-1">
             Patronymic
             <div className=" flex items-center">
               <label
@@ -129,18 +111,9 @@ function PersonInfo({
 
           <input
             {...register(`${actor}.patronymic`, {
-              minLength: {
-                value: 2,
-                message: "Length must be at least 2 symbols",
-              },
-              maxLength: {
-                value: 30,
-                message: "Length must be less than 30 symbols",
-              },
-              pattern: {
-                value: /^[a-zA-Zа-яА-ЯЁё\s-]+$/,
-                message: "Please enter valid value",
-              },
+              minLength: getRuleMinLength(2),
+              maxLength: getRuleMaxLength(30),
+              pattern: getRulePatternLetters(),
             })}
             disabled={isChecked}
             className="form__input border-solid border-gray-300 border py-1 px-4 w-full rounded text-gray-700 disabled:bg-slate-300"
@@ -175,17 +148,11 @@ function PersonInfo({
           )}
         </div>
       </div>
-      <label className="text-gray-600 font-normal mt-2 block">Address</label>
+      <label className="text-gray-600 font-normal mt-2 block">Residential address</label>
       <input
         {...register(`${actor}.address`, {
-          minLength: {
-            value: 2,
-            message: "Length must be at least 2 symbols",
-          },
-          maxLength: {
-            value: 30,
-            message: "Length must be less than 30 symbols",
-          },
+          minLength: getRuleMinLength(10),
+          maxLength: getRuleMaxLength(50),
         })}
         className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
         type="text"

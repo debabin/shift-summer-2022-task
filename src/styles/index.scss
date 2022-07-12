@@ -41,7 +41,7 @@ body {
     border-radius: 1rem;
     box-shadow: $inner-shadow;
     background: none;
-    color: var(--greyDark);
+    // color: var(--greyDark);
     &::placeholder { color: var(--greyLight-3); }
     &:focus { outline: none; box-shadow: $shadow;}
   }  
@@ -70,8 +70,49 @@ body {
         }
       }
   }
+
+  .btn{
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1rem;
+    box-shadow: $shadow;
+    justify-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .3s ease;
+
+    &__primary {
+      background: var(--primary);
+      box-shadow:inset .2rem .2rem 1rem var(--primary-light), 
+                inset -.2rem -.2rem 1rem var(--primary-dark),
+                $shadow;  
+      color: var(--greyLight-1);
+  
+      &:hover { color: var(--white); }
+      &:active {
+        box-shadow:inset .2rem .2rem 1rem var(--primary-dark), 
+               inset -.2rem -.2rem 1rem var(--primary-light);
+      }
+  }
+}
 }
 
 *{
   font-family: 'Poppins', sans-serif;
+}
+
+
+.react-select__control {
+    background: none!important; 
+    border-radius: 3rem!important;
+
+  &__input {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: $inner-shadow;
+    &::placeholder { color: var(--greyLight-3); }
+    &:focus { outline: none; box-shadow: $shadow;}
+  }  
 }
