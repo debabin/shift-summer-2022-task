@@ -9,9 +9,12 @@ import createOrder from "../API/order";
 // import { formClass } from "../helpers/app.classnames";
 import { useState } from "react";
 import { Circles } from "react-loader-spinner";
+import { AiOutlineClose } from "react-icons/ai";
 
 export default function OrderForm() {
-  const [lastID, setLastID] = useState();
+  const [lastID, setLastID] = useState("");
+  const [errorObj, setErrorObj] = useState("");
+  const [modalOpened, setModalOpened] = useState(false);
 
   const mutation = useMutation(
     "create order",
@@ -20,8 +23,11 @@ export default function OrderForm() {
       onSuccess: (response) => {
         setLastID(response.data.data.order.id);
       },
-      onError: (error: any) => {
-        alert(error.message);
+      onError: (error: any, data: object) => {
+        setErrorObj(JSON.parse(error.request.response).data);
+        console.log(error, data);
+        console.log(JSON.parse(error.request.response).data);
+        setModalOpened(true);
       },
     }
   );
@@ -43,12 +49,38 @@ export default function OrderForm() {
     <div>
       {mutation.isLoading && (
         <div
-          className="loadingScreen w-screen h-screen fixed 
+          className="blackout w-screen h-screen fixed 
       bg-gray-900 z-50 opacity-60 top-0 flex items-center justify-center"
         >
           {<Circles color="white" ariaLabel="loading-indicator" />}
         </div>
       )}
+
+      <div
+        className={
+          modalOpened
+            ? "modal modal--active max-w-md sm:max-w-xl"
+            : "modal max-w-md sm:max-w-xl"
+        }
+      >
+        <div className="flex justify-between">
+          <p className="text-xl text-red-500">Something went wrong :( </p>
+          <AiOutlineClose
+            className="modal__closeBtn transition duration-250 ease-out hover:ease-in"
+            onClick={() => setModalOpened(false)}
+          />
+        </div>
+        <ul>
+          {Object.values(errorObj).map((elem, iElem) =>
+            Object.values(elem).map((err, iErr) => (
+              <li key={iElem + "_" + iErr}>
+                {err} ({Object.keys(errorObj)[iElem]}.{Object.keys(elem)[iErr]}
+                ))
+              </li>
+            ))
+          )}
+        </ul>
+      </div>
 
       <h1 className="text-center text-4xl text-gray-900 mt-10">
         Delivery request

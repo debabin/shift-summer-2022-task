@@ -59,7 +59,7 @@ function ParcelInfo({
               <ReactSelect<IOption>
                 classNamePrefix="react-select"
                 className="form__input"
-                placeholder="Тип посылки"
+                placeholder="Choose parcel type"
                 options={parcelOptions}
                 //requires replacement
                 value={getValue(value) as PropsValue<IOption>}
