@@ -1,96 +1,22 @@
-
-.form-elements {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  width: 65%;
-}
-
-#content {
-  padding-left: 25px;
-}
-
-hr {
-  margin-top: 0;
-  margin-left: 0;
-  width: 30%;
-  display: block;
-  border: none;
-  border-top: solid #356FFF 0.1px;
-}
-
-.form-unit-title {
-  color: #356FFF;
-  margin-bottom: 0;
-  margin-top: 10px;
-  font-weight: 500;
-
-}
-
-label {
-  display: block;
-}
-
-span {
-  width: 100%;
-}
-
-textarea {
-  width: 100%;
-}
-
 body {
   font-family: Roboto;
   font-weight: 300;
 }
 
-select {
-  font-family: Roboto;
-  font-weight: 300;
+.content {
+  padding-left: 25px;
 }
 
-input[type="date"] {
-  width: 85%;
-}
-
-button[type="submit"] {
-  width: 20%;
-  height: 30px;
-  color: #fff;
-  background-color: lightskyblue;
-  background-color: #0093E9;
-  border: none;
-  margin-top: 10px;
-  border-radius: 4px;
-  font-size: 18px;
-  font-family: Montserrat;
-  font-weight: 500;
-  background-color: #356FFF;
-  
-}
-
-#side-div {
+.side-div {
   top: 0px;
   right: 0px;
   position: fixed;
   width: 30%;
   height: 100%;
   background-color: #D7E9FF;
-
 }
 
-h2 {
-  font-size: 30px;
-  margin-bottom: 0;
-  margin-top: 5px;
-  font-family: Montserrat;
-}
-
-h3 {
-  font-size: 18px;
-  margin-top: 0;
-}
-
-#side-logo {
+.side-logo {
   position: absolute;
   margin: auto;
   top: 0;
@@ -111,7 +37,70 @@ h1 {
   font-family: Montserrat;
   font-weight: 500;
   font-size: 50px;
+}
 
+h2 {
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-family: Montserrat;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.form-unit-title {
+  color: #356FFF;
+  margin-bottom: 0;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+hr {
+  margin-top: 0;
+  margin-left: 0;
+  width: 30%;
+  display: block;
+  border: none;
+  border-top: solid #356FFF 0.1px;
+}
+
+.form-elements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 65%;
+}
+
+label {
+  display: block;
+}
+
+textarea {
+  width: 100%;
+}
+
+select {
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+input[type="date"] {
+  width: 85%;
+}
+
+button[type="submit"] {
+  width: 20%;
+  height: 30px;
+  color: #fff;
+  border: none;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 500;
+  background-color: #356FFF;
 }
 
 select:focus,
@@ -119,7 +108,6 @@ textarea:focus,
 input:focus {
   outline-color: #92CEFF;
   border-radius: 2px;
-
 }
 
 select,
@@ -130,5 +118,3 @@ input {
   border-radius: 2px;
   border: 1px solid #858585;
 }
-
-
