@@ -1,16 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 
-import { Input } from './input.js';
-import { Textarea } from './textarea.js';
-import { Select } from './select.js';
-import { Button } from './button.js';
-import { OrderDetails } from './orderDetails.js';
+import { Input } from './Input.js';
+import { Textarea } from './Textarea.js';
+import { Select } from './Select.js';
+import { Button } from './Button.js';
+import { OrderDetails } from './OrderDetails.js';
 import { getMaxDate } from '../helpers/getMaxDate.js';
 
 import toast, { Toaster } from 'react-hot-toast';
 
-export const Form = () => {
+export const OrderForm = () => {
     const maxDate = getMaxDate();
     const minDate = '1900-01-01';
     const [formState, setFormState] = React.useState(

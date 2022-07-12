@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Form } from './components/form';
+import { OrderForm } from './components/OrderForm.js';
 
 import pigeon from './carrier-pigeon.png';
 import './App.css';
@@ -12,7 +12,7 @@ export const App = () => {
         <img src={pigeon} width="80%" className="side-logo" alt="Голубиная почта онлйан" title="Carrier pigeon icons created by Nikita Golubev - Flaticon" />
         <h1>Голубиная почта онлайн</h1>
       </div>
-      <Form />
+      <OrderForm />
     </div>
   )
 }
