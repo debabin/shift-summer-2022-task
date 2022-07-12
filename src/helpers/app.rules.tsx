@@ -1,8 +1,3 @@
-export function getDate18YrsAgo() {
-  const date18YrsAgo = new Date();
-  date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18);
-  return date18YrsAgo.toISOString().slice(0, 10);
-}
 
 export function getRuleMinLength(value: number) {
   return {
@@ -20,7 +15,7 @@ export function getRuleMaxLength(value: number) {
 
 export function getRulePatternLetters() {
   return {
-    value: /^[a-zA-Zа-яА-ЯЁё\s-]+$/,
+    value: /^[a-zA-Zа-яА-ЯЁё;\s-]+$/,
     message: "Please enter valid value",
   };
 }

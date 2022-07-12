@@ -29,6 +29,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 .form {
@@ -115,4 +116,14 @@ body {
     &::placeholder { color: var(--greyLight-3); }
     &:focus { outline: none; box-shadow: $shadow;}
   }  
+}
+
+.loadingScreen{
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // & > * {
+  //   margin: auto;
+
+  // }
 }

@@ -4,10 +4,15 @@ import { IShippingFields } from "../helpers/app.interface";
 import { PersonInfoProps } from "../helpers/app.type";
 import {
   getRuleMinLength,
-  getDate18YrsAgo,
   getRuleMaxLength,
   getRulePatternLetters,
-} from "../helpers/app.functions";
+} from "../helpers/app.rules";
+
+function getDate18YrsAgo() {
+  const date18YrsAgo = new Date();
+  date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18);
+  return date18YrsAgo.toISOString().slice(0, 10);
+}
 
 function PersonInfo({
   register,
@@ -137,6 +142,7 @@ function PersonInfo({
             })}
             className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="date"
+            value={"1990-01-01"}
             max={getDate18YrsAgo()}
             min={"1990-01-01"}
             autoFocus

@@ -16,7 +16,7 @@ export interface IAddress {
 }
 
 export interface IParcelInfo {
-  type: string;  
+  type: string;
   weight: number;
   comment?: string;
 }
@@ -28,7 +28,11 @@ export interface IShippingFields {
   package: IParcelInfo;
 }
 
+export interface IOrder {
+  order: IShippingFields;
+}
+
 export interface IOption {
-  value:string, 
-  label:string
+  value: string;
+  label: string;
 }
