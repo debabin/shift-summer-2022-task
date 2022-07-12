@@ -63,6 +63,7 @@ function App() {
         
 
         <RecipientInfo register={register} errors={errors} actor="recipient"/> 
+        <RecipientInfo register={register} errors={errors} actor="sender"/> 
         <Controller
           control={control}
           name="parcel.type"

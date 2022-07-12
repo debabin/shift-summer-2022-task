@@ -25,13 +25,13 @@ function RecipientInfo({
       errorObject = errors.sender;
       break;
     case "recipient":
-      errorObject = errorObject;
+      errorObject = errors.recipient;
       break;
   }
 
   return (
     <div>
-      <p className="text-gray-800 text-xl font-medium mb-3">Sender info</p>
+      <p className="text-gray-800 text-xl font-medium mb-3 capitalize">{actor} information</p>
       <label className="text-gray-600 font-medium">
         <span className="text-red-500 text-lg italic mr-1">*</span>
         Name
@@ -66,7 +66,7 @@ function RecipientInfo({
         Surname
       </label>
       <input
-        {...register("recipient.surname", {
+        {...register(`${actor}.surname`, {
           required: "Surname is require field!",
           minLength: {
             value: 2,
@@ -94,7 +94,7 @@ function RecipientInfo({
         Patronymic
         <label className="text-gray-600 text-sm flex items-center">
           <input
-            {...register("recipient.hasNoPatronymic")}
+            {...register(`${actor}.hasNoPatronymic`)}
             className="mt-1 mr-1"
             type="checkbox"
             onClick={() => setNoPatronymicRec(!noPatronymicRec)}
@@ -103,7 +103,7 @@ function RecipientInfo({
         </label>
       </label>
       <input
-        {...register("recipient.patronymic", {
+        {...register(`${actor}.patronymic`, {
           minLength: {
             value: 2,
             message: "Length must be at least 2 symbols",
@@ -133,7 +133,7 @@ function RecipientInfo({
         Birthday date
       </label>
       <input
-        {...register("recipient.dateOfBirth", {
+        {...register(`${actor}.dateOfBirth`, {
           required: "Birthday date is require field!",
         })}
         className="border-solid border-gray-300 border py-2 px-4  w-full rounded text-gray-700"
@@ -147,7 +147,7 @@ function RecipientInfo({
       )}
       <label className="text-gray-600 font-medium mt-2 block">Address</label>
       <input
-        {...register("recipient.address", {
+        {...register(`${actor}.address`, {
           minLength: {
             value: 2,
             message: "Length must be at least 2 symbols",
