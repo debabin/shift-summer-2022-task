@@ -1,6 +1,5 @@
 import { IOption, IShippingFields } from "../helpers/app.interface";
 import { ParcelInfoProps } from "../helpers/app.type";
-import { getRuleMinLength, getRuleMaxLength } from "../helpers/app.functions";
 import ReactSelect, { PropsValue } from "react-select";
 import { Controller } from "react-hook-form";
 

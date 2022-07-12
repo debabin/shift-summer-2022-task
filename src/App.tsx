@@ -14,9 +14,18 @@ function App() {
     formState: { errors },
   } = useForm<IShippingFields>({ mode: "onChange" });
 
-  const onSubmit: SubmitHandler<IShippingFields> = (data) => {
-    console.log(data);
-    reset();
+  const onSubmit: SubmitHandler<IShippingFields> = (formData) => {
+    console.log({ MyData: formData });
+    // reset();
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order: formData }),
+    };
+    fetch("https://shift-summer-2022-backend.herokuapp.com/api/create/order", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log("recieved: ", data));
   };
 
   return (
@@ -38,7 +47,6 @@ function App() {
 
         <div className="my-3 text-center">
           <button
-            onClick={() => console.log(errors)}
             className="btn btn__primary  text-white font-bold py-2 px-4 rounded "
             type="submit"
           >
