@@ -12,11 +12,18 @@ export type FormInputProps<TFormValues> = {
   actor: "sender" | "recipient";
 };
 
-function RecipientInfo({
+function getDate18YrsAgo() {
+  const date18YrsAgo = new Date();
+  date18YrsAgo.setFullYear(date18YrsAgo.getFullYear() - 18);
+  return date18YrsAgo.toISOString().slice(0,10);
+}
+
+function PersonInfo({
   register,
   errors,
   actor,
 }: FormInputProps<IShippingFields>): JSX.Element {
+
   const [noPatronymicRec, setNoPatronymicRec] = useState(false);
 
   let errorObject;
@@ -31,7 +38,9 @@ function RecipientInfo({
 
   return (
     <div>
-      <p className="text-gray-800 text-xl font-medium mb-3 capitalize">{actor} information</p>
+      <p className="text-gray-800 text-xl font-medium mb-3 capitalize">
+        {actor} information
+      </p>
       <label className="text-gray-600 font-medium">
         <span className="text-red-500 text-lg italic mr-1">*</span>
         Name
@@ -134,10 +143,12 @@ function RecipientInfo({
       </label>
       <input
         {...register(`${actor}.dateOfBirth`, {
-          required: "Birthday date is require field!",
+          required: "Birthday date is require field!"
         })}
         className="border-solid border-gray-300 border py-2 px-4  w-full rounded text-gray-700"
         type="date"
+        max={getDate18YrsAgo()}
+        min={"1990-01-01"}
         autoFocus
       />
       {errorObject?.dateOfBirth && (
@@ -165,4 +176,4 @@ function RecipientInfo({
   );
 }
 
-export default RecipientInfo;
+export default PersonInfo;

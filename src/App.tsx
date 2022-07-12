@@ -1,12 +1,10 @@
-import React, { useState } from "react";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import { IOption, IShippingFields } from "./app.interface";
 import "./App.css";
 import ReactSelect, { PropsValue } from "react-select";
-import RecipientInfo from "./RecipientInfo";
+import PersonInfo from "./PersonInfo";
 
 function App() {
-
   const {
     register,
     handleSubmit,
@@ -16,15 +14,14 @@ function App() {
   } = useForm<IShippingFields>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IShippingFields> = (data) => {
-    alert(`Your receiver name: ${data.recipient.name}`);
-    reset();
     console.log(data);
+    reset();
   };
 
   const getValue = (value: string) =>
-    value ? options.find((option) => option.value == value) : "";
+    value ? parcelOptions.find((option) => option.value == value) : "";
 
-  const options: IOption[] = [
+  const parcelOptions: IOption[] = [
     {
       value: "letter",
       label: "Письмо",
@@ -56,25 +53,27 @@ function App() {
       <h1 className="text-center text-2xl text-orange-500 mt-10">
         Заявка на доставку
       </h1>
+
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-xl m-auto py-5 mt-10 px-8 border"
       >
-        
+        <PersonInfo register={register} errors={errors} actor="recipient" />
+        {/* <PersonInfo register={register} errors={errors} actor="sender" /> */}
 
-        <RecipientInfo register={register} errors={errors} actor="recipient"/> 
-        <RecipientInfo register={register} errors={errors} actor="sender"/> 
         <Controller
           control={control}
           name="parcel.type"
-          rules={{
-            // required: "Parcel type is required field",
-          }}
+          rules={
+            {
+              // required: "Parcel type is required field",
+            }
+          }
           render={({ field: { onChange, value }, fieldState: { error } }) => (
             <div>
               <ReactSelect<IOption>
                 placeholder="Тип посылки"
-                options={options}
+                options={parcelOptions}
                 //requires replacement
                 value={getValue(value) as PropsValue<IOption>}
                 onChange={(newValue) => onChange((newValue as IOption).value)}
