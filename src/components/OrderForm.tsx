@@ -82,7 +82,7 @@ export default function OrderForm() {
         </ul>
       </div>
 
-      <h1 className="text-center text-4xl text-gray-900 mt-10">
+      <h1 className="text-center text-4xl text-gray-900 mt-10 title">
         Delivery request
         <img src={deliveryIcon} className="h-10 inline ml-3" />
       </h1>

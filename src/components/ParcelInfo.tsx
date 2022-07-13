@@ -9,27 +9,27 @@ const getValue = (value: string) =>
 const parcelOptions: IOption[] = [
   {
     value: "letter",
-    label: "Письмо",
+    label: "Letter",
   },
   {
     value: "valuableLetter",
-    label: "Ценное письмо",
+    label: "Valuable letter",
   },
   {
     value: "package",
-    label: "Бандероль",
+    label: "Package",
   },
   {
     value: "smallPackage",
-    label: "Мелкий пакет",
+    label: "Small package",
   },
   {
     value: "parcel",
-    label: "Посылка",
+    label: "Parcel",
   },
   {
     value: "valuableParcel",
-    label: "Ценная посылка",
+    label: "Valuable parcel",
   },
 ];
 
@@ -77,7 +77,6 @@ function ParcelInfo({
               <input
                 {...register("package.weight", {
                   required: "Parcel weight is require field!",
-                  value: 2,
                   min: { value: 0.1, message: "Minimum weight is 0.1" },
                   max: { value: 20, message: "Maximum weight is 20" },
                 })}
