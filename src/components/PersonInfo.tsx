@@ -18,6 +18,7 @@ function PersonInfo({
   register,
   errors,
   actor,
+  resetField,
 }: PersonInfoProps<IShippingFields>): JSX.Element {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -88,7 +89,10 @@ function PersonInfo({
             Patronymic
             <div className=" flex items-center">
               <label
-                onClick={() => { setIsChecked(!isChecked)}}
+                onClick={() => {
+                  setIsChecked(!isChecked);
+                  resetField(`${actor}.middlename`);
+                }}
                 className={
                   isChecked
                     ? "form__checkbox form__checkbox--active"
@@ -108,7 +112,6 @@ function PersonInfo({
                 type="checkbox"
                 className="hidden"
                 checked={isChecked}
-                onClick={() => setIsChecked(!isChecked)}
               />
               <span className="text-gray-600 text-sm ">Has no patronymic </span>
             </div>
@@ -142,7 +145,6 @@ function PersonInfo({
             })}
             className="form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700"
             type="date"
-            value={"1990-01-01"}
             max={getDate18YrsAgo()}
             min={"1990-01-01"}
             autoFocus

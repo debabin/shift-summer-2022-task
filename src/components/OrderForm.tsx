@@ -36,6 +36,7 @@ export default function OrderForm() {
     register,
     handleSubmit,
     reset,
+    resetField,
     control,
     formState: { errors },
   } = useForm<IShippingFields>({ mode: "onChange" });
@@ -94,14 +95,14 @@ export default function OrderForm() {
         className="max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl
         m-auto py-5 mt-10 px-8 grid grid-cols-1 sm:grid-cols-2 gap-12 form"
       >
-        <PersonInfo {...{ register }} {...{ errors }} actor="receiver" />
-        <PersonInfo {...{ register }} {...{ errors }} actor="sender" />
-        <AddressInfo {...{ register }} {...{ errors }} />
-        <ParcelInfo {...{ register }} {...{ errors }} {...{ control }} />
+        <PersonInfo {...{ register, errors, resetField }} actor="receiver" />
+        <PersonInfo {...{ register, errors, resetField }} actor="sender" />
+        <AddressInfo {...{ register, errors }} />
+        <ParcelInfo {...{ register, errors, control }} />
 
         <div className="my-3 text-center">
           <button
-            className="btn btn__primary  text-white font-bold py-2 px-4 rounded "
+            className="btn btn__primary  text-white font-bold py-2 px-4 rounded"
             type="submit"
           >
             Submit

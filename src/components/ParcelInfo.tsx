@@ -4,7 +4,7 @@ import ReactSelect, { PropsValue } from "react-select";
 import { Controller } from "react-hook-form";
 
 const getValue = (value: string) =>
-  value ? parcelOptions.find((option) => option.value == value) : "";
+  value ? parcelOptions.find((option) => option.value == value) as PropsValue<IOption> : undefined;
 
 const parcelOptions: IOption[] = [
   {
@@ -62,7 +62,7 @@ function ParcelInfo({
                 placeholder="Choose parcel type"
                 options={parcelOptions}
                 //requires replacement
-                value={getValue(value) as PropsValue<IOption>}
+                value={getValue(value)}
                 onChange={(newValue) => onChange((newValue as IOption).value)}
               />
               {error && (

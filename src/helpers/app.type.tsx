@@ -3,6 +3,7 @@ import {
   DeepRequired,
   FieldErrorsImpl,
   UseFormRegister,
+  UseFormResetField,
 } from "react-hook-form";
 
 
@@ -11,6 +12,7 @@ type actorOption = "sender" | "receiver";
 export type PersonInfoProps<TFormValues> = {
   register: UseFormRegister<TFormValues>;
   errors: FieldErrorsImpl<DeepRequired<TFormValues>>;
+  resetField: UseFormResetField<TFormValues>;
   actor: actorOption;
 };
 
