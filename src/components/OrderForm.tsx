@@ -1,6 +1,7 @@
 import { IOrder, IShippingFields } from "../helpers/app.interface";
 import PersonInfo from "../components/PersonInfo";
 import deliveryIcon from "../assets/delivery.png";
+import error from "../assets/error.png";
 import AddressInfo from "../components/AddressInfo";
 import ParcelInfo from "../components/ParcelInfo";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -22,6 +23,7 @@ export default function OrderForm() {
     {
       onSuccess: (response) => {
         setLastID(response.data.data.order.id);
+        reset();
       },
       onError: (error: any, data: object) => {
         setErrorObj(JSON.parse(error.request.response).data);
@@ -43,7 +45,6 @@ export default function OrderForm() {
 
   const onSubmit: SubmitHandler<IShippingFields> = (formData) => {
     mutation.mutateAsync({ order: formData });
-    reset();
   };
 
   return (
@@ -71,11 +72,13 @@ export default function OrderForm() {
             onClick={() => setModalOpened(false)}
           />
         </div>
-        <ul>
+        <ul className="mt-2">
           {Object.values(errorObj).map((elem, iElem) =>
             Object.values(elem).map((err, iErr) => (
-              <li key={iElem + "_" + iErr}>
-                {err} ({Object.keys(errorObj)[iElem]}.{Object.keys(elem)[iErr]}
+              <li key={iElem + "_" + iErr} className="flex items-center"> 
+                <img src={error} className="leading-3 mr-1"/>
+                <span>{err} ({Object.keys(elem)[iErr]} of{" "}
+                {Object.keys(errorObj)[iElem]}</span>
                 ))
               </li>
             ))

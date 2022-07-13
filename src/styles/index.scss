@@ -128,8 +128,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 100;
-  width: 25rem;
-  height: 10rem;
+  min-width: 25rem;
+  min-height: 10rem;
 margin: auto;
 padding: 1rem 2rem;
 display: none;
@@ -169,4 +169,10 @@ display: none;
    text-shadow: $shadow;
    caret-color:#262626;
    outline: none;
+}
+
+li{
+  &::before {
+    content: {};
+  }
 }
