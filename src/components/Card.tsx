@@ -1,30 +1,38 @@
-import { ICharacter } from "../helpers/interfaces";
+import { Link, useNavigate } from "react-router-dom";
+import { classNames } from "../styles/classNames";
 
-export default function Card(item: ICharacter) {
+export default function Card({ character }: CardProps) {
+  let navigate = useNavigate();
+
   return (
-    <div className="card w-full cursor-pointer">
-      <div className="card-inner w-full h-full">
-        <div className="card-front absolute w-full h-full">
-          <img src={item.img} className="h-full w-full object-cover"/>
-        </div>
-        <div className="card-back absolute w-full h-full">
-          <h1>{item.name}</h1>
-          <ul>
-            <li>
-              <strong>Actor Name:</strong> {item.portrayed}
-            </li>
-            <li>
-              <strong>Nickname:</strong> {item.nickname}
-            </li>
-            <li>
-              <strong>Birthday:</strong> {item.birthday}
-            </li>
-            <li>
-              <strong>Status:</strong> {item.status}
-            </li>
-          </ul>
+    <Link to={`/${character.char_id}`}>
+      <div
+        className="group w-96 xs:w-full cursor-pointer h-350 m-auto"
+        // onClick={() => navigate()}
+      >
+        <div className={classNames.cardInner}>
+          <div className="absolute w-full h-full">
+            <img src={character.img} className={classNames.cardImage} />
+          </div>
+          <div className={classNames.cardBack}>
+            <h1 className={classNames.cardTitle}>{character.name}</h1>
+            <ul>
+              <li className="list-none mb-1">
+                <strong>Actor Name:</strong> {character.portrayed}
+              </li>
+              <li className="list-none mb-1">
+                <strong>Nickname:</strong> {character.nickname}
+              </li>
+              <li className="list-none mb-1">
+                <strong>Birthday:</strong> {character.birthday}
+              </li>
+              <li className="list-none mb-1">
+                <strong>Status:</strong> {character.status}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
