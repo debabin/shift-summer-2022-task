@@ -1,33 +1,13 @@
 // по номеру открытой страницы определяется список страниц, номера которых отобразятся на экране
 export const makeCurrentPageslist = (currentPage) => {
     const numPages = 42;
-    let currentPages = [];
-    //fisrt
-    currentPages.push(1, 2);
-    if (currentPage >= 3 & (!(currentPages.includes(currentPage - 2)))) {
-        currentPages.push(currentPage - 2)
-    };
-    //previous
-    if (currentPage >= 2 & (!(currentPages.includes(currentPage - 1)))) {
-        currentPages.push(currentPage - 1)
-    };
-    //current
-    if (!(currentPages.includes(currentPage))) {
-        currentPages.push(currentPage)
-    };
-    //next
-    if ((currentPage <= numPages - 1) & (!(currentPages.includes(currentPage + 1)))) {
-        currentPages.push(currentPage + 1)
-    };
-    if ((currentPage <= numPages - 2) & (!(currentPages.includes(currentPage + 2)))) {
-        currentPages.push(currentPage + 2)
-    };
-    //last
-    if (!(currentPages.includes(numPages - 1))) {
-        currentPages.push(numPages - 1)
-    }
-    if (!(currentPages.includes(numPages))) {
-        currentPages.push(numPages)
-    };
+    let currentPages = [1, 2, currentPage - 1, currentPage - 1, currentPage, currentPage + 1, currentPage + 2, numPages - 1, numPages];
+    currentPages = currentPages.filter(pageNum => (pageNum > 0) && (pageNum <= numPages));
+    currentPages = [...new Set(currentPages)];
+    currentPages = currentPages.map((page, index, currentPages) => {
+        return (
+            [(page - currentPages[index - 1] > 1 && '...'), page])
+    });
+    currentPages = currentPages.flat().filter(item => item);
     return currentPages
 }

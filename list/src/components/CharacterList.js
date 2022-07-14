@@ -1,35 +1,20 @@
-import axios from 'axios';
-import { useQuery } from 'react-query';
-
 import { CharcterCard } from './CharacterCard';
 import { Loading } from './Loading';
 import { Error } from './Error';
+import { useGetCharacters } from '../hooks/useGetCharacters';
 
 export const CharacterList = ({ page }) => {
-  const { isLoading, error, data } = useQuery('repoData', () =>
-    axios.get("http://localhost:3000/api/rickAndMorty/characters", {
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-        "authToken": "RickAndMorty",
-      },
-      params: { "page": page }
-    })
-      .then(response => response.data.data.results)
-  )
+  const url = "http://localhost:3000/api/rickAndMorty/characters";
+  const params = { "page": page };
+  const { isLoading, error, data } = useGetCharacters(url, params);
   if (isLoading) {
     return (<Loading />)
   }
 
   if (error) {
-    return (<Error message={error.message}></Error>)
+    return (<Error message={error.message} />)
   }
-  const characterList = [];
-  const numCols = 5;
-  for (let i = 0; i < data.length; i++) {
-    const col = i % numCols + 1;
-    const row = Math.floor(i / numCols) + 1;
-    characterList.push(<CharcterCard key={data[i].id} character={data[i]} col={col} row={row}></CharcterCard>)
-  }
-  return (<div className="character-list">{characterList}</div>)
+
+  const characters = data.map(character => <CharcterCard key={character.id} character={character} />)
+  return (<div className="character-list">{characters}</div>)
 };

@@ -1,8 +1,7 @@
 import React from 'react';
 
-export const CharcterCard = ({ character, col, row }) => {
-
-    return (<div className="card" style={{ gridColumn: col, gridRow: row }}>
+export const CharcterCard = ({ character }) => {
+    return (<div className="card">
         <img className="image" src={character.image} alt={character.name} />
         <div className="info">
             <p className="name">{character.id}.{character.name}</p>

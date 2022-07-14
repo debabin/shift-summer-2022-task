@@ -87,6 +87,11 @@ h1 {
   text-align: center;
 }
 
+.not-found {
+  background-color: #5CAD4A;
+  height: 100vh;
+}
+
 .not-found h1 {
   font-size: 100px;
   margin: 0px;
