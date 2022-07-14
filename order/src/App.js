@@ -2,7 +2,7 @@ import React from 'react';
 
 import { OrderForm } from './components/OrderForm.js';
 
-import pigeon from './carrier-pigeon.png';
+import pigeon from './images/carrier-pigeon.png';
 import './App.css';
 
 export const App = () => {

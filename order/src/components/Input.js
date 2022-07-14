@@ -1,18 +1,13 @@
 import React from 'react';
 
-export const Input = ({ label, name, type, min, max, onChange, value, col, row, isRequired, props }) => {
-    const getCols = (col) => {
-        if (Array.isArray(col)) {
-            return [col[0], col[1]]
-        }
-        return [col, col]
-    };
-    const [colStart, colEnd] = getCols(col);
-
+export const Input = ({ label, name, className, type, min, max, onChange, value, isRequired, props }) => {
+    if (!className) {
+        className = "input-wrapper"
+    }
     //звёздочка для обязательных полей
-    const asterisk = <span style={{ color: "#356FFF", fontWeight: 500 }}>*</span>
+    const asterisk = <span className="asterisk">*</span>
     return (
-        <div className="input-wrapper" style={{ gridColumnStart: colStart, gridColumnEnd: colEnd, gridRow: row }}>
+        <div className={className}>
             <label>{label}{isRequired && asterisk}</label>
             <input type={type}
                 minLength={min}

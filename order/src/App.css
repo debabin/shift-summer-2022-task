@@ -77,6 +77,28 @@ label {
   display: block;
 }
 
+.asterisk {
+  color: #356FFF;
+  font-weight: 500
+}
+
+.input-wrapper.address {
+  grid-column: 2 / 5;
+}
+
+.input-wrapper.address input {
+  width: 100%;
+}
+
+input[type="date"] {
+  width: 85%;
+}
+
+.input-wrapper.comment {
+  grid-row: 2;
+  grid-column: 1 / 5;
+}
+
 textarea {
   width: 100%;
 }
@@ -84,10 +106,6 @@ textarea {
 select {
   font-family: Roboto;
   font-weight: 300;
-}
-
-input[type="date"] {
-  width: 85%;
 }
 
 button[type="submit"] {
