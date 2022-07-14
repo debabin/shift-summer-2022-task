@@ -1,7 +1,8 @@
 /* ЭТО ЧЕРНОВИК, ВСЁ СЫРОЕ И НЕ РАБОТАЕТ*/
 const requestURL="https://shift-summer-2022-backend.herokuapp.com/api/create/order"
-
-
+const data = {
+  
+}
 function sendRequest(method,url,body=null){
   return new Promise((resolve,reject)=>{
 	const xhr=new XMLHttpRequest()
@@ -22,6 +23,4 @@ function sendRequest(method,url,body=null){
     xhr.send(body)	
   })
 }
-sendRequest('POST',requestURL,body)
-  .then(data=>console.log(data))
-  .catch(err=>console.log(err))
+document.querySelector("#submit").onclick = sendRequest('POST',requestURL,body)
