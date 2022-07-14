@@ -5,6 +5,12 @@
       input{
         margin: 2px;
       }
+      .invalid{
+        border-color: red;
+      }
+      #error{
+        color: red;
+      }
       div { 
         margin: auto;
         width: 364px;  
@@ -17,10 +23,17 @@
       .checkbox{
         position: relative;
         }
-      .one{
+      .pmidlename{
         position: absolute;
         left: -999px;
       }
-      input[name="Отчество"]:checked ~ span.one {
+      .omidlename{
+        position: absolute;
+        left: -999px;
+      }
+      input[name="pmid"]:checked ~ span.pmidlename {
+        left: auto;
+      }
+      input[name="omid"]:checked ~ span.omidlename {
         left: auto;
       }
