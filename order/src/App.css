@@ -1,0 +1,138 @@
+body {
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+.content {
+  padding-left: 25px;
+}
+
+.side-div {
+  top: 0px;
+  right: 0px;
+  position: fixed;
+  width: 30%;
+  height: 100%;
+  background-color: #D7E9FF;
+}
+
+.side-logo {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 30%;
+}
+
+h1 {
+  position: absolute;
+  margin: auto;
+  top: 70%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #356FFF;
+  text-align: center;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 50px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-bottom: 0;
+  margin-top: 5px;
+  font-family: Montserrat;
+}
+
+h3 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.form-unit-title {
+  color: #356FFF;
+  margin-bottom: 0;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+hr {
+  margin-top: 0;
+  margin-left: 0;
+  width: 30%;
+  display: block;
+  border: none;
+  border-top: solid #356FFF 0.1px;
+}
+
+.form-elements {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 65%;
+}
+
+label {
+  display: block;
+}
+
+.asterisk {
+  color: #356FFF;
+  font-weight: 500
+}
+
+.input-wrapper.address {
+  grid-column: 2 / 5;
+}
+
+.input-wrapper.address input {
+  width: 100%;
+}
+
+input[type="date"] {
+  width: 85%;
+}
+
+.input-wrapper.comment {
+  grid-row: 2;
+  grid-column: 1 / 5;
+}
+
+textarea {
+  width: 100%;
+}
+
+select {
+  font-family: Roboto;
+  font-weight: 300;
+}
+
+button[type="submit"] {
+  width: 20%;
+  height: 30px;
+  color: #fff;
+  border: none;
+  margin-top: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-weight: 500;
+  background-color: #356FFF;
+}
+
+select:focus,
+textarea:focus,
+input:focus {
+  outline-color: #92CEFF;
+  border-radius: 2px;
+}
+
+select,
+textarea,
+input {
+  font-family: Roboto;
+  font-weight: 400;
+  border-radius: 2px;
+  border: 1px solid #858585;
+}
