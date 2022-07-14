@@ -1,3 +1,4 @@
+/* ЭТО ЧЕРНОВИК, ВСЁ СЫРОЕ И НЕ РАБОТАЕТ*/
 const requestURL="https://shift-summer-2022-backend.herokuapp.com/api/create/order"
 
 
@@ -21,7 +22,6 @@ function sendRequest(method,url,body=null){
     xhr.send(body)	
   })
 }
-
 sendRequest('POST',requestURL,body)
   .then(data=>console.log(data))
   .catch(err=>console.log(err))
