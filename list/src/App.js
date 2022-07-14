@@ -14,21 +14,22 @@ const queryClient = new QueryClient();
 export const App = () => {
   let {page} = useParams();
   page = parseInt(page);
-  const [query, setQuery] = React.useState("");
+  const [state, setState] = React.useState({query:""});
+  const handleQuery = (event) => {
+    const query = event.target.value;
+    setState({ query: query });}
 
   return (
     <div className="App">
       <h1 className="page-headline">Rick and Morty character list</h1>
       <Paginator currentPage={page} />
-      <SearchBar query={query} setQuery={setQuery} />
+      <SearchBar value={state.query} onChange={handleQuery} />
       <QueryClientProvider client={queryClient}>
-        {query === "" ?
+        {state.query === "" ?
           <CharacterList page={page}/>
           :
-          <CharacterListByQuery query={query}/>}
+          <CharacterListByQuery query={state.query}/>}
       </QueryClientProvider>
     </div>
   );
 };
-
-
