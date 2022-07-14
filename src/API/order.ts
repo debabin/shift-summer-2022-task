@@ -1,7 +1,7 @@
 import  axios  from 'axios';
 import { IOrder } from './../helpers/app.interface';
 
-const mainURL = "https://shift-summer-2022-backend.herokuapp.com/api/create/order";
+const mainURL = "http://localhost:3000/api/create/order";
 
 export default function createOrder(data:IOrder) {
   // const requestOptions = {

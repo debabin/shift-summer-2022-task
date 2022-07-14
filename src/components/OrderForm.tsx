@@ -4,12 +4,12 @@ import deliveryIcon from "../assets/delivery.png";
 import error from "../assets/error.png";
 import AddressInfo from "../components/AddressInfo";
 import ParcelInfo from "../components/ParcelInfo";
+import SubmitButton from "../components/SubmitButton";
+import Spinner from "../components/Spinner";
+import createOrder from "../API/order";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useMutation } from "react-query";
-import createOrder from "../API/order";
-// import { formClass } from "../helpers/app.classnames";
 import { useState } from "react";
-import { Circles } from "react-loader-spinner";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function OrderForm() {
@@ -25,10 +25,8 @@ export default function OrderForm() {
         setLastID(response.data.data.order.id);
         reset();
       },
-      onError: (error: any, data: object) => {
+      onError: (error: any) => {
         setErrorObj(JSON.parse(error.request.response).data);
-        console.log(error, data);
-        console.log(JSON.parse(error.request.response).data);
         setModalOpened(true);
       },
     }
@@ -49,14 +47,7 @@ export default function OrderForm() {
 
   return (
     <div>
-      {mutation.isLoading && (
-        <div
-          className="blackout w-screen h-screen fixed 
-      bg-gray-900 z-50 opacity-60 top-0 flex items-center justify-center"
-        >
-          {<Circles color="white" ariaLabel="loading-indicator" />}
-        </div>
-      )}
+      {mutation.isLoading && <Spinner />}
 
       <div
         className={
@@ -75,11 +66,12 @@ export default function OrderForm() {
         <ul className="mt-2">
           {Object.values(errorObj).map((elem, iElem) =>
             Object.values(elem).map((err, iErr) => (
-              <li key={iElem + "_" + iErr} className="flex items-center"> 
-                <img src={error} className="leading-3 mr-1"/>
-                <span>{err} ({Object.keys(elem)[iErr]} of{" "}
-                {Object.keys(errorObj)[iElem]}</span>
-                ))
+              <li key={iElem + "_" + iErr} className="flex items-center">
+                <img src={error} className="leading-3 mr-1" />
+                <span>
+                  {err} ({Object.keys(elem)[iErr]} of{" "}
+                  {Object.keys(errorObj)[iElem]})
+                </span>
               </li>
             ))
           )}
@@ -90,9 +82,15 @@ export default function OrderForm() {
         Delivery request
         <img src={deliveryIcon} className="h-10 inline ml-3" />
       </h1>
+
       {mutation.isSuccess && (
-        <p className="text-green-500">Success! ID of last order: {lastID}</p>
+        <p className="text-green-500 w-full text-center">
+          Application successfully sent.
+          <br />
+          Last order ID: {lastID}
+        </p>
       )}
+      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl
@@ -103,14 +101,7 @@ export default function OrderForm() {
         <AddressInfo {...{ register, errors }} />
         <ParcelInfo {...{ register, errors, control }} />
 
-        <div className="my-3 text-center">
-          <button
-            className="btn btn__primary  text-white font-bold py-2 px-4 rounded"
-            type="submit"
-          >
-            Submit
-          </button>
-        </div>
+        <SubmitButton />
       </form>
     </div>
   );
