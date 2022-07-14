@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <form>
+      <div align="center"> 
+        <p><strong>Получатель</strong></p>
+        <input type="text" name="pfirstname" placeholder="Имя" minlength="2" maxlength="30">
+        <input type="text" name="plastname" placeholder="Фамилия" minlength="2" maxlength="30">
+        <p align="left">
+          <strong><label for="pmid" >Отчество</label></strong>
+          <input type="checkbox" name="pmid" checked>
+          <span class="pmidlename">
+            <input type="text" name="pmidlename" placeholder="Отчество" minlength="2" maxlength="30">
+          </span>
+        </p>
+        <p><strong>Дата рождения</strong></p>
+        <input type="date" name="pbirthday"min="1900-01-01" max="2004-07-07">
+        <p><strong>Адрес проживания</strong></p>
+        <input type="text" name="padress"placeholder="Адрес" minlength="10" maxlength="50">
+      </div>
+      <br>
+      <div align="center">
+        <p><strong>Отправитель</strong></p>
+        <input type="text" name="ofirstname" placeholder="Имя" minlength="2" maxlength="30">
+        <input type="text" name="olastname" placeholder="Фамилия" minlength="2" maxlength="30">
+        <p align="left">
+          <strong><label for="omid" >Отчество</label></strong>
+          <input type="checkbox" name="omid" checked>
+          <span class="omidlename">
+            <input type="text" name="omidlename" placeholder="Отчество" minlength="2" maxlength="30">
+          </span>
+        </p>
+        <p><strong>Дата рождения</strong></p>
+        <input type="date" name="obirthday"min="1900-01-01" max="2004-07-07">
+        <p><strong>Адрес проживания</strong></p>
+        <input type="text" name="oadress"placeholder="Адрес" minlength="10" maxlength="50">
+      </div>
+      <br>
+      <div align="center">
+        <p><strong>Адрес доставки</strong></p>
+        <input type="text" name="City" placeholder="Город">
+        <input type="text" name="Street" placeholder="Улица">
+        <input type="text" name="House" placeholder="Дом">
+        <input type="text" name="Flat" placeholder="Квартира">
+        <textarea cols="40" placeholder="Информация для доставщика"></textarea><br>
+      </div>
+      <br>
+      <div align="center">
+        <strong>Информация о посылке</strong>
+        <select name="postinfo">
+          <option>письмо</option>
+          <option>ценное письмо</option>
+          <option>бандероль</option>
+          <option>мелкий пакет</option>
+          <option>посылка</option>
+          <option>ценная посылка</option>
+        </select>
+      </div >  
+      <br>
+      <div align="center">
+        <button type="submit" id="submit">Отправить</button>
+        <input type="reset" value="Очистить">
+      </div>
+    </form>
+    <!--<script src="js/script.js"></script>-->
+  </body>
+</html>
