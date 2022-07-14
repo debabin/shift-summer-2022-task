@@ -1,6 +1,6 @@
-import { itemType } from "../helpers/types";
+import { ICharacter } from "../helpers/interfaces";
 
-export default function Card(item: itemType) {
+export default function Card(item: ICharacter) {
   return (
     <div className="card w-full cursor-pointer">
       <div className="card-inner w-full h-full">

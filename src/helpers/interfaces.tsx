@@ -1,5 +1,5 @@
-export type itemType = {
-  appearance: Array<number>;
+export interface ICharacter {
+  appearance: number[];
   better_call_saul_appearance: Array<number>;
   birthday: string;
   category: string;
@@ -11,6 +11,8 @@ export type itemType = {
   length: number;
   portrayed: string;
   status: string;
-};
+}
 
-export type listItemsType = Array<itemType>;
+export interface ICharactersProps {
+  characters: ICharacter[];
+}
