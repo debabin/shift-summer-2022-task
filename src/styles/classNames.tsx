@@ -13,4 +13,10 @@ export const classNames = {
   fullScreenBlackout:
     "w-screen h-screen fixed bg-gray-900 z-50 opacity-60 top-0 flex items-center justify-center",
   pageTitle: "text-center text-4xl text-gray-900 mt-10 title",
+  successMessage: "text-green-500 w-full text-center",
+  errorMessage: "text-xl text-red-500",
+  modalCloseBtn:
+    "modal__closeBtn transition duration-250 ease-out hover:ease-in",
+  modalClosed: "modal max-w-md sm:max-w-xl",
+  modalOpen: "modal modal--active max-w-md sm:max-w-xl",
 };

@@ -2,7 +2,7 @@ import { IOption } from "./interfaces";
 
 export const url = "http://localhost:3000/api/create/order";
 
-export const parcelOptions: IOption[] = [
+export const packageOptions: IOption[] = [
     {
       value: "letter",
       label: "Letter",

@@ -53,16 +53,12 @@ export default function OrderForm() {
       {mutation.isLoading && <Spinner />}
 
       <div
-        className={
-          modalOpened
-            ? "modal modal--active max-w-md sm:max-w-xl"
-            : "modal max-w-md sm:max-w-xl"
-        }
+        className={modalOpened ? classNames.modalOpen : classNames.modalClosed}
       >
         <div className="flex justify-between">
-          <p className="text-xl text-red-500">Something went wrong :( </p>
+          <p className={classNames.errorMessage}>Something went wrong :( </p>
           <AiOutlineClose
-            className="modal__closeBtn transition duration-250 ease-out hover:ease-in"
+            className={classNames.modalCloseBtn}
             onClick={() => setModalOpened(false)}
           />
         </div>
@@ -87,7 +83,7 @@ export default function OrderForm() {
       </h1>
 
       {mutation.isSuccess && (
-        <p className="text-green-500 w-full text-center">
+        <p className={classNames.successMessage}>
           Application successfully sent.
           <br />
           Last order ID: {lastID}
