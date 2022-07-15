@@ -1,21 +1,30 @@
-import { IOrder, IShippingFields } from "../helpers/app.interface";
-import PersonInfo from "../components/PersonInfo";
-import deliveryIcon from "../assets/delivery.png";
-import error from "../assets/error.png";
-import AddressInfo from "../components/AddressInfo";
-import ParcelInfo from "../components/ParcelInfo";
-import SubmitButton from "../components/SubmitButton";
-import Spinner from "../components/Spinner";
-import createOrder from "../API/order";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useMutation } from "react-query";
 import { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineClose } from "react-icons/ai";
+import { useMutation } from "react-query";
+import createOrder from "../api/order";
+import deliveryIcon from "../img/delivery.png";
+import error from "../img/error.png";
+import AddressInfo from "./info/AddressInfo";
+import ParcelInfo from "./info/ParcelInfo";
+import PersonInfo from "./info/PersonInfo";
+import SubmitButton from "./ui/Button";
+import Spinner from "./ui/Spinner";
+import { IOrder, IShippingFields } from "../helpers/interfaces";
+import { classNames } from "../styles/classNames";
 
 export default function OrderForm() {
   const [lastID, setLastID] = useState("");
-  const [errorObj, setErrorObj] = useState("");
   const [modalOpened, setModalOpened] = useState(false);
+  const [backendError, setBackendError] = useState("");
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+    register,
+    reset,
+    resetField,
+  } = useForm<IShippingFields>({ mode: "onChange" });
 
   const mutation = useMutation(
     "create order",
@@ -26,20 +35,11 @@ export default function OrderForm() {
         reset();
       },
       onError: (error: any) => {
-        setErrorObj(JSON.parse(error.request.response).data);
+        setBackendError(JSON.parse(error.request.response).data);
         setModalOpened(true);
       },
     }
   );
-
-  const {
-    register,
-    handleSubmit,
-    reset,
-    resetField,
-    control,
-    formState: { errors },
-  } = useForm<IShippingFields>({ mode: "onChange" });
 
   const onSubmit: SubmitHandler<IShippingFields> = (formData) => {
     mutation.mutateAsync({ order: formData });
@@ -64,13 +64,13 @@ export default function OrderForm() {
           />
         </div>
         <ul className="mt-2">
-          {Object.values(errorObj).map((elem, iElem) =>
+          {Object.values(backendError).map((elem, iElem) =>
             Object.values(elem).map((err, iErr) => (
               <li key={iElem + "_" + iErr} className="flex items-center">
                 <img src={error} className="leading-3 mr-1" />
                 <span>
                   {err} ({Object.keys(elem)[iErr]} of{" "}
-                  {Object.keys(errorObj)[iElem]})
+                  {Object.keys(backendError)[iElem]})
                 </span>
               </li>
             ))
@@ -90,12 +90,8 @@ export default function OrderForm() {
           Last order ID: {lastID}
         </p>
       )}
-      
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl
-        m-auto py-5 mt-10 px-8 grid grid-cols-1 sm:grid-cols-2 gap-12 form"
-      >
+
+      <form onSubmit={handleSubmit(onSubmit)} className={classNames.form}>
         <PersonInfo {...{ register, errors, resetField }} actor="receiver" />
         <PersonInfo {...{ register, errors, resetField }} actor="sender" />
         <AddressInfo {...{ register, errors }} />
