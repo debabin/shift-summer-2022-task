@@ -3,24 +3,15 @@ const requestURL = "https://shift-summer-2022-backend.herokuapp.com/api/create/o
 const data = {
 
 }
+document.querySelector("#submit").onclick = async (e) => {
+    e.preventDefault();
 
-function sendRequest(method, url, body = null) {
-    return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest()
-        xhr.open(method, url)
-        xhr.reponseType = 'json'
+    let response = await fetch(requestURL, {
+        method: 'POST',
+        body: new FormData(formElem)
+    });
 
-        xhr.onload = () => {
-            if (xhr.status >= 400) {
-                reject(xhr.response)
-            } else {
-                resolve(xhr.response)
-            }
-        }
-        xhr.onerror = () => {
-            console.log(xhr.response)
-        }
-        xhr.send(body)
-    })
-}
-document.querySelector("#submit").onclick = sendRequest('POST', requestURL, body)
+    let result = await response.json();
+
+    alert(result.message);
+};
