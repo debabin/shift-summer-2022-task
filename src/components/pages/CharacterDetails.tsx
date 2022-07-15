@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Circles } from "react-loader-spinner";
 import { classNames } from "../../styles/classNames";
 import { url } from "../../utils/constants";
 
 export default function CharacterPage() {
+  let navigate = useNavigate();
   let { id } = useParams();
 
   const [isLoading, setIsLoading] = useState(true);
@@ -24,13 +25,10 @@ export default function CharacterPage() {
         setCharacterInfo(res.data.data[0]);
         console.log(res.data.data[0]);
         setIsLoading(false);
-
-        Object.entries(res.data.data[0]).map(([key, value]) => {
-          console.log(key);
-        });
       })
       .catch((err) => {
-        console.log(err.message);
+        navigate("/error")
+        console.log(err);
       });
   }, []);
 

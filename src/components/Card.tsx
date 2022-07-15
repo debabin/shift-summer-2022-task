@@ -1,8 +1,7 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { classNames } from "../styles/classNames";
 
 export default function Card({ character }: CardProps) {
-  let navigate = useNavigate();
 
   return (
     <Link to={`/${character.char_id}`}>

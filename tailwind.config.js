@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'greenBackground':"url('/src/img/backgroundGreen.jpg')"
+        'greenBackground':"url('/src/img/backgroundGreen.jpg')",
       },
       screens: {
         'xs':'640px'
