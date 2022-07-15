@@ -4,6 +4,9 @@ export const Input = ({ label, name, className, type, min, max, onChange, value,
     if (!className) {
         className = "input-wrapper"
     }
+    if (props) {
+        className += (props.disabled && " disabled")
+    }
     //звёздочка для обязательных полей
     const asterisk = <span className="asterisk">*</span>
     return (

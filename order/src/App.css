@@ -82,6 +82,10 @@ label {
   font-weight: 500
 }
 
+.input-wrapper.disabled {
+  color: #858585;
+}
+
 .input-wrapper.address {
   grid-column: 2 / 5;
 }
@@ -108,7 +112,7 @@ select {
   font-weight: 300;
 }
 
-button[type="submit"] {
+button {
   width: 20%;
   height: 30px;
   color: #fff;
@@ -135,4 +139,14 @@ input {
   font-weight: 400;
   border-radius: 2px;
   border: 1px solid #858585;
+}
+
+.order-details {
+  margin-top: 10px;
+  max-width: 65%;
+  overflow-wrap: break-word;
+}
+
+.order-id {
+  color: #356FFF;
 }
