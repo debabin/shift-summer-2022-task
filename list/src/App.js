@@ -6,29 +6,39 @@ import { Paginator } from './components/Paginator';
 import { SearchBar } from './components/SearchBar';
 import { CharacterList } from './components/CharacterList';
 import { CharacterListByQuery } from './components/CharacterListByQuery';
+import { NotFound } from './components/NotFound';
 
 import './App.css';
 
 const queryClient = new QueryClient();
 
 export const App = () => {
-  let {page} = useParams();
+  const numPages = 42;
+  const [state, setState] = React.useState({ query: "" });
+  let { page } = useParams();
+  if (page > numPages) {
+    return <NotFound />
+  }
   page = parseInt(page);
-  const [state, setState] = React.useState({query:""});
   const handleQuery = (event) => {
     const query = event.target.value;
-    setState({ query: query });}
+    setState({ query: query });
+  }
 
   return (
     <div className="App">
-      <h1 className="page-headline">Rick and Morty character list</h1>
-      <Paginator currentPage={page} />
-      <SearchBar value={state.query} onChange={handleQuery} />
+      <div className="header">
+        <h1 className="page-headline">Rick and Morty character list</h1>
+        <div className="navigation">
+          <Paginator currentPage={page} />
+          <SearchBar value={state.query} onChange={handleQuery} />
+        </div>
+      </div>
       <QueryClientProvider client={queryClient}>
         {state.query === "" ?
-          <CharacterList page={page}/>
+          <CharacterList page={page} />
           :
-          <CharacterListByQuery query={state.query}/>}
+          <CharacterListByQuery query={state.query} />}
       </QueryClientProvider>
     </div>
   );

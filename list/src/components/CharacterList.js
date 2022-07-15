@@ -4,7 +4,7 @@ import { Error } from './Error';
 import { useGetCharacters } from '../hooks/useGetCharacters';
 
 export const CharacterList = ({ page }) => {
-  const url = "http://localhost:3000/api/rickAndMorty/characters";
+  const url = "/rickAndMorty/characters";
   const params = { "page": page };
   const { isLoading, error, data } = useGetCharacters(url, params);
   if (isLoading) {
@@ -14,7 +14,6 @@ export const CharacterList = ({ page }) => {
   if (error) {
     return (<Error message={error.message} />)
   }
-
   const characters = data.map(character => <CharcterCard key={character.id} character={character} />)
   return (<div className="character-list">{characters}</div>)
 };

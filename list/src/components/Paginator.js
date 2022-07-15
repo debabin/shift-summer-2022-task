@@ -1,8 +1,6 @@
-import { Link } from 'react-router-dom';
 import { makeCurrentPageslist } from '../helpers/makeCurrentPagesList';
 
 const numPages = 42;
-
 
 export const Paginator = ({ currentPage }) => {
     const currentPages = makeCurrentPageslist(currentPage);
@@ -10,19 +8,16 @@ export const Paginator = ({ currentPage }) => {
         if (typeof page === "number") {
             return <PageNum page={page} currentPage={currentPage} />
         }
-        else {
-            return <span className="dots">...</span>
-        }
+        return <span className="dots">...</span>
     })
 
-
     return (
-        <div id="page-nums">
+        <div className="page-nums">
             {currentPage > 1 &&
-                <Link to={`/${currentPage - 1}`} className="page-link">{'<'}</Link>}
+                <a href={`/${currentPage - 1}`} className="page-link">{'<'}</a>}
             {pagesList}
             {currentPage < numPages &&
-                <Link to={`/${currentPage + 1}`} className="page-link">{'>'}</Link>
+                <a href={`/${currentPage + 1}`} className="page-link">{'>'}</a>
             }
         </div>
     )
@@ -37,10 +32,9 @@ const PageNum = ({ page, currentPage }) => {
     };
     const pageClassName = getPageClassName(page, currentPage);
 
-
     return (
-        <Link to={`/${page}`}
+        <a href={`/${page}`}
             className={pageClassName}>
             {page}
-        </Link>)
+        </a>)
 }

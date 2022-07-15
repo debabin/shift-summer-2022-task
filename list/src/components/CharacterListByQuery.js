@@ -6,7 +6,7 @@ import { useGetCharacters } from '../hooks/useGetCharacters';
 
 export const CharacterListByQuery = ({ query }) => {
   const allPages = Array.from(Array(827).keys()).join();
-  const url = "http://localhost:3000/api/rickAndMorty/characters/" + allPages;
+  const url = "/rickAndMorty/characters/" + allPages;
   const { isLoading, error, data } = useGetCharacters(url, '');
   if (isLoading) {
     return (<Loading />)
