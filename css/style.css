@@ -1,39 +1,48 @@
-      body{
-        color: #1faee9;
-        text-shadow: grey 0 0 2px;
+      body {
+          color: #1faee9;
+          text-shadow: grey 0 0 2px;
       }
-      input{
-        margin: 2px;
+
+      input {
+          margin: 2px;
       }
-      .invalid{
-        border-color: red;
+
+      .invalid {
+          border-color: red;
       }
-      #error{
-        color: red;
+
+      #error {
+          color: red;
       }
-      div { 
-        margin: auto;
-        width: 364px;  
-        background: #b0e0e6;  
-        outline: 2px solid #b0e0e6; 
-        border: 3px solid #b0e0e6;
-        border-radius: 10px; 
-        box-shadow: 0 0 10px #000;
+
+      .big {
+          margin: auto;
+          width: 364px;
+          background: #b0e0e6;
+          outline: 2px solid #b0e0e6;
+          border: 3px solid #b0e0e6;
+          border-radius: 10px;
+          box-shadow: 0 0 10px #000;
       }
-      .checkbox{
-        position: relative;
-        }
-      .pmidlename{
-        position: absolute;
-        left: -999px;
+
+      .checkbox {
+          position: relative;
       }
-      .omidlename{
-        position: absolute;
-        left: -999px;
+
+      .pmidlename {
+          position: absolute;
+          left: -999px;
       }
-      input[name="pmid"]:checked ~ span.pmidlename {
-        left: auto;
+
+      .omidlename {
+          position: absolute;
+          left: -999px;
       }
-      input[name="omid"]:checked ~ span.omidlename {
-        left: auto;
+
+      input[name="pmid"]:checked~span.pmidlename {
+          left: auto;
+      }
+
+      input[name="omid"]:checked~span.omidlename {
+          left: auto;
       }
