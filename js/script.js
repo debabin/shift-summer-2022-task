@@ -1,8 +1,5 @@
 /* ЭТО ЧЕРНОВИК, ВСЁ СЫРОЕ И НЕ РАБОТАЕТ*/
 const requestURL = "https://shift-summer-2022-backend.herokuapp.com/api/create/order"
-const data = {
-
-}
 document.querySelector("#submit").onclick = async (e) => {
     e.preventDefault();
 
