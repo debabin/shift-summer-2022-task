@@ -6,7 +6,7 @@ import {
 import { IShippingFields } from "../../helpers/interfaces";
 import { classNames } from "../../styles/classNames";
 import Error from "../Error";
-import {InputText} from "../Input";
+import { InputText } from "../Input";
 import Label from "../Label";
 
 type AddressInfoProps<TFormValues> = {

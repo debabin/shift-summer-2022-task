@@ -1,15 +1,15 @@
+import axios from "axios";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { AiOutlineClose } from "react-icons/ai";
 import { useMutation } from "react-query";
-import createOrder from "../api/order";
-import deliveryIcon from "../img/delivery.png";
-import error from "../img/error.png";
 import AddressInfo from "./info/AddressInfo";
 import ParcelInfo from "./info/ParcelInfo";
 import PersonInfo from "./info/PersonInfo";
-import SubmitButton from "./ui/Button";
-import Spinner from "./ui/Spinner";
+import Spinner from "./Spinner";
+import deliveryIcon from "../img/delivery.png";
+import error from "../img/error.png";
+import { url } from "../helpers/constants";
 import { IOrder, IShippingFields } from "../helpers/interfaces";
 import { classNames } from "../styles/classNames";
 
@@ -28,7 +28,10 @@ export default function OrderForm() {
 
   const mutation = useMutation(
     "create order",
-    (data: IOrder) => createOrder(data),
+    (data: IOrder) =>
+      axios.post(url, data, {
+        headers: { "Content-Type": "application/json" },
+      }),
     {
       onSuccess: (response) => {
         setLastID(response.data.data.order.id);
@@ -78,7 +81,7 @@ export default function OrderForm() {
         </ul>
       </div>
 
-      <h1 className="text-center text-4xl text-gray-900 mt-10 title">
+      <h1 className={classNames.pageTitle}>
         Delivery request
         <img src={deliveryIcon} className="h-10 inline ml-3" />
       </h1>
@@ -97,7 +100,9 @@ export default function OrderForm() {
         <AddressInfo {...{ register, errors }} />
         <ParcelInfo {...{ register, errors, control }} />
 
-        <SubmitButton />
+        <button className={classNames.button} type="submit">
+          Submit
+        </button>
       </form>
     </div>
   );

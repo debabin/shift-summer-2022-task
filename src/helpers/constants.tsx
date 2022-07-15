@@ -1,4 +1,6 @@
-import { IOption } from "../helpers/interfaces";
+import { IOption } from "./interfaces";
+
+export const url = "http://localhost:3000/api/create/order";
 
 export const parcelOptions: IOption[] = [
     {

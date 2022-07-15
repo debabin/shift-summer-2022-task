@@ -34,7 +34,7 @@ export function InputText({
   pattern,
   register,
   required,
-  disabled
+  disabled,
 }: inputTextProps<IShippingFields>) {
   return (
     <input

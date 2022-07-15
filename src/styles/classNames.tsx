@@ -9,4 +9,8 @@ export const classNames = {
   input:
     "form__input border-solid border-gray-300 border py-1 px-4  w-full rounded text-gray-700 disabled:bg-slate-300",
   infoTwoColumns: "grid grid-cols-1 lg:grid-cols-2 gap-3 items-start mb-2",
+  button: "btn btn__primary text-white font-bold py-2 px-4 rounded",
+  fullScreenBlackout:
+    "w-screen h-screen fixed bg-gray-900 z-50 opacity-60 top-0 flex items-center justify-center",
+  pageTitle: "text-center text-4xl text-gray-900 mt-10 title",
 };

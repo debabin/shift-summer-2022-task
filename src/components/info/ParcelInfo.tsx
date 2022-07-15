@@ -10,7 +10,7 @@ import Error from "../Error";
 import Label from "../Label";
 import { IOption, IShippingFields } from "../../helpers/interfaces";
 import { classNames } from "../../styles/classNames";
-import { parcelOptions } from "../../utils/constants";
+import { parcelOptions } from "../../helpers/constants";
 import { InputNumber } from "../Input";
 
 const getValue = (value: string) =>
@@ -37,14 +37,13 @@ function ParcelInfo({
         control={control}
         name="package.type"
         rules={{
-          required: "Parcel type is required field",
+          required: "Required field",
         }}
         render={({ field: { onChange, value }, fieldState: { error } }) => (
           <div>
             <p className={classNames.infoTitle}>Parcel information</p>
             <div className="mb-2">
               <Label required={true} text="Parcel type" />
-
               <ReactSelect<IOption>
                 classNamePrefix="react-select"
                 className="form__input"
@@ -53,9 +52,7 @@ function ParcelInfo({
                 value={getValue(value)}
                 onChange={(newValue) => onChange((newValue as IOption).value)}
               />
-              {error && (
-                <p className="text-red-500 text-xs italic">{error.message}</p>
-              )}
+              {error && <Error message={error.message} />}
             </div>
             <div className="mb-2">
               <Label required={true} text="Approximate weight" />
@@ -75,7 +72,7 @@ function ParcelInfo({
 
               <textarea
                 {...register("package.comment")}
-                className="form__input border-solid border-gray-300 border py-1 px-4 w-full rounded text-gray-700"
+                className={classNames.textArea}
                 autoFocus
               />
             </div>
