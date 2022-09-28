@@ -1,0 +1,25 @@
+.form-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-page-container {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 50px 2px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form-container {
+    height: 300px;
+    padding: 0 100px;
+}
+
+.input-container {
+    margin-bottom: 10px;
+}

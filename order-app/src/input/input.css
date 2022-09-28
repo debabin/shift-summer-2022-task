@@ -1,0 +1,10 @@
+input {
+    background: rgba(237, 237, 237, 0.7);
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+}
+
+input::placeholder {
+    color:rgba(0, 0, 0, 0.5)
+}

@@ -1,9 +1,11 @@
 import './App.css';
 import React from "react";
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+import { FormPage } from './pages/form/form';
 
 function App() {
-  document.body.style.backgroundColor = "black";
+  return  <FormPage />;
+ /* document.body.style.backgroundColor = "black";
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const validateDate = (value) => {
     const selected = new Date(value).getFullYear();
@@ -143,7 +145,7 @@ function App() {
         <input type="submit" value="Отправить" />
       </form>
     </div>
-  );
+  ); */
 }
 
 export default App;
